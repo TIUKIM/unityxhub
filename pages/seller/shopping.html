@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Shopping – UnityXhub</title>
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Reuse Global CSS -->
+    <link rel="stylesheet" href="../../css/style.css">
+
+    <style>
+        /* Products Grid */
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            padding: 30px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .product-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+        }
+
+        .product-img {
+            height: 200px;
+            background: #f5f5f5;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #999;
+            font-size: 1.5rem;
+            font-weight: bold;
+            border-bottom: 1px solid var(--gray);
+        }
+
+        .product-info {
+            padding: 15px;
+            color: var(--dark);
+        }
+
+        .product-info h3 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 8px;
+            line-height: 1.4;
+        }
+
+        .product-price {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+
+        .original-price {
+            text-decoration: line-through;
+            color: #999;
+            font-size: 0.95rem;
+            margin-left: 8px;
+        }
+
+        .btn-primary {
+            width: 100%;
+            padding: 10px;
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .btn-primary:hover {
+            background: #e05d00;
+        }
+
+        .product-actions {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 15px 15px;
+        }
+
+        .action-btn {
+            width: 48%;
+            padding: 8px;
+            border: 1px solid var(--gray);
+            border-radius: 8px;
+            background: white;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .action-btn:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+        }
+
+        .action-btn i {
+            font-size: 1rem;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="header-container">
+            <div class="logo-section">
+                <div class="site-title">UnityXhub</div>
+                <div class="slogan">Shopping</div>
+            </div>
+            <div class="search-bar">
+                <input type="text" placeholder="Search products...">
+                <div class="search-icon">
+                    <i class="fas fa-search"></i>
+                </div>
+            </div>
+            <div class="auth-buttons">
+                <button class="btn btn-primary" id="sellerBtn" onclick="location.href='be-seller-form.html'">
+                    <i class="fas fa-store"></i> Be a Seller
+                </button>
+                <a href="../seller/cart.html" class="btn btn-outline">
+                    <i class="fas fa-shopping-cart"></i> Cart
+					<span id="cartBadge" class="cart-badge">0</span>
+				</a>
+            </div>
+            <div class="hamburger" id="hamburger">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </header>
+
+    <!-- Navigation Tabs -->
+    <div class="nav-tabs">
+        <div class="tabs-container">
+            <a href="../../index.html"><i class="fas fa-home"></i> Home</a>
+            <a href="#" class="active"><i class="fas fa-shopping-cart"></i> Shopping</a>
+            <a href="../jobs/job.html"><i class="fas fa-briefcase"></i> Jobs</a>
+            <a href="../freelancer/freelance-newsfeed.html"><i class="fas fa-hammer"></i> Freelance</a>
+            <a href="../business/business-directory.html"><i class="fas fa-building"></i> Business</a>
+            <a href="../classifiedads/classifieds.html"><i class="fas fa-ad"></i> Classifieds</a>
+            <a href="wishlist.html"><i class="fas fa-heart"></i> Wishlist</a>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <main>
+        <h2 class="section-title"><i class="fas fa-store"></i> All Products</h2>
+        <div class="products-grid">
+            <!-- Product 1 -->
+            <div class="product-card" onclick="location.href='product-detail.html?id=iphone15'">
+                <div class="product-img">iPhone 15</div>
+                <div class="product-info">
+                    <h3>New iPhone 15 128GB</h3>
+                    <div class="product-price">$699 <span class="original-price">$899</span></div>
+                </div>
+                <div class="product-actions">
+                    <button class="action-btn wishlist-btn" onclick="event.stopPropagation(); addToWishlist('iphone15')">
+                        <i class="far fa-heart"></i>
+                    </button>
+                    <button class="action-btn compare-btn" onclick="event.stopPropagation(); addToCompare('iphone15')">
+                        <i class="fas fa-exchange-alt"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Product 2 -->
+            <div class="product-card" onclick="location.href='product-detail.html?id=airpods'">
+                <div class="product-img">AirPods Pro</div>
+                <div class="product-info">
+                    <h3>AirPods Pro 2nd Gen</h3>
+                    <div class="product-price">$199 <span class="original-price">$249</span></div>
+                </div>
+                <button class="btn btn-primary add-to-cart-btn"
+                        onclick="event.stopPropagation(); cart.addItem({
+                            id: 'airpods',
+                            name: 'AirPods Pro 2nd Gen',
+                            price: 199,
+                            quantity: 1
+                        })">
+                    <i class="fas fa-shopping-cart"></i> Add to Cart
+                </button>
+                <div class="product-actions">
+                    <button class="action-btn wishlist-btn" onclick="event.stopPropagation(); addToWishlist('airpods')">
+                        <i class="far fa-heart"></i>
+                    </button>
+                    <button class="action-btn compare-btn" onclick="event.stopPropagation(); addToCompare('airpods')">
+                        <i class="fas fa-exchange-alt"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Product 3 -->
+            <div class="product-card" onclick="location.href='product-detail.html?id=smartwatch'">
+                <div class="product-img">Smart Watch</div>
+                <div class="product-info">
+                    <h3>Fitness Tracker Pro</h3>
+                    <div class="product-price">$79 <span class="original-price">$129</span></div>
+                </div>
+                <div class="product-actions">
+                    <button class="action-btn wishlist-btn" onclick="event.stopPropagation(); addToWishlist('smartwatch')">
+                        <i class="far fa-heart"></i>
+                    </button>
+                    <button class="action-btn compare-btn" onclick="event.stopPropagation(); addToCompare('smartwatch')">
+                        <i class="fas fa-exchange-alt"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Compare Confirmation Modal -->
+    <div class="modal" id="compareModal" style="display: none;">
+        <div class="modal-content" style="width: 90%; max-width: 400px; text-align: center; padding: 30px;">
+            <h2><i class="fas fa-balance-scale"></i> Compare Products?</h2>
+            <p>Do you want to compare the selected products now?</p>
+            <div style="margin: 20px 0; display: flex; justify-content: center; gap: 15px;">
+                <button class="btn btn-primary" id="goToCompareBtn" style="padding: 10px 20px;">
+                    Yes, Compare
+                </button>
+                <button class="btn btn-outline" id="cancelCompareBtn" style="padding: 10px 20px;">
+                    Cancel
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Sign In Modal -->
+    <div class="modal" id="signInModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button class="close-modal" id="closeModal">&times;</button>
+                <h2>Sign In to UnityXhub</h2>
+            </div>
+            <div class="modal-body">
+                <div class="social-login">
+                    <button class="social-btn google-btn">
+                        <i class="fab fa-google"></i> Sign in with Google
+                    </button>
+                    <button class="social-btn facebook-btn">
+                        <i class="fab fa-facebook-f"></i> Sign in with Facebook
+                    </button>
+                </div>
+                <div class="divider">or sign in with email</div>
+                <div class="form-group">
+                    <label for="email">Email or Mobile Number</label>
+                    <input type="text" id="email" class="form-control" placeholder="Enter email or number">
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" class="form-control" placeholder="Enter password">
+                </div>
+                <button class="btn btn-primary" style="width:100%; padding:12px;">Sign In</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mobile Navigation -->
+    <div class="mobile-nav" id="mobileNav">
+        <div class="mobile-nav-header">
+            <div class="site-title">UnityXhub</div>
+            <button class="close-mobile-nav" id="closeMobileNav">&times;</button>
+        </div>
+        <ul class="mobile-nav-links">
+            <li><a href="../../index.html"><i class="fas fa-home"></i> Home</a></li>
+            <li><a href="#" class="active"><i class="fas fa-shopping-cart"></i> Shopping</a></li>
+            <li><a href="../jobs/jobs.html"><i class="fas fa-briefcase"></i> Jobs</a></li>
+            <li><a href="../freelancer/freelance-newsfeed.html"><i class="fas fa-hammer"></i> Freelance</a></li>
+            <li><a href="../business/business-directory.html"><i class="fas fa-building"></i> Business</a></li>
+            <li><a href="../classifiedads/classifieds.html"><i class="fas fa-ad"></i> Classifieds</a></li>
+            <li><a href="wishlist.html" class="btn btn-outline" style="margin-top:10px;">
+                <i class="fas fa-heart"></i> Wishlist
+            </a></li>
+            <li><a href="be-seller-form.html" class="btn btn-primary" style="background: var(--primary); color: white; margin-top: 10px;">
+                <i class="fas fa-store"></i> Be a Seller
+            </a></li>
+        </ul>
+    </div>
+
+    <!-- Cart Notification -->
+    <div class="cart-notification" id="cartNotification">
+        <i class="fas fa-check-circle"></i>
+        <span>Item added to cart!</span>
+    </div>
+
+    <!-- ✅ FLOATING CHAT – BOTTOM RIGHT -->
+    <div id="supportChatWidget">
+        <button id="chatToggle" class="chat-toggle">
+            <i class="fas fa-comments"></i>
+        </button>
+        <div class="chat-box" id="chatBox">
+            <div class="chat-header">
+                <div class="chat-title">
+                    <i class="fas fa-robot"></i> UnityXhub Assistant
+                </div>
+                <button id="chatMinimize" class="chat-minimize">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="chat-body" id="chatBody">
+                <div class="message bot">
+                    Hello! I'm UnityXhub Assistant 🤖<br><br>
+                    How can I help you with shopping today?
+                </div>
+            </div>
+            <div class="chat-input-section">
+                <textarea id="userMessageInput" placeholder="Type your message..." rows="2"></textarea>
+                <button onclick="sendUserMessage()" class="send-btn">Send</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <!-- Column 1: About UnityXhub -->
+            <div class="footer-column">
+                <h3>UnityXhub</h3>
+                <p>Your one-stop digital ecosystem for shopping, jobs, freelancers, and community connections. Built by Filipinos for the global economy.</p>
+                <div class="payment-methods">
+                    <div class="payment-method">Visa</div>
+                    <div class="payment-method">MC</div>
+                    <div class="payment-method">PayPal</div>
+                    <div class="payment-method">GCash</div>
+                    <div class="payment-method">Bank</div>
+                </div>
+            </div>
+
+            <!-- Column 2: Quick Links -->
+            <div class="footer-column">
+                <h3>Quick Links</h3>
+                <ul class="footer-links">
+                    <li><a href="../../index.html"><i class="fas fa-chevron-right"></i> Home</a></li>
+                    <li><a href="../../pages/seller/cart.html"><i class="fas fa-chevron-right"></i> View Cart</a></li>
+                    <li><a href="wishlist.html"><i class="fas fa-chevron-right"></i> My Wishlist</a></li>
+                    <li><a href="../../pages/services/business-feed.html"><i class="fas fa-chevron-right"></i> Services Feed</a></li>
+                    <li><a href="../../pages/return-policy.html"><i class="fas fa-chevron-right"></i> Return & Refund Policy</a></li>
+                </ul>
+            </div>
+
+            <!-- Column 3: Support -->
+            <div class="footer-column">
+                <h3>Support</h3>
+                <ul class="footer-links">
+                    <li><a href="../help-center.html"><i class="fas fa-chevron-right"></i> FAQ</a></li>
+                    <li><a href="../contact.html"><i class="fas fa-chevron-right"></i> Contact Us</a></li>
+                    <li><a href="../buyer-protection.html"><i class="fas fa-chevron-right"></i> Buyer Protection</a></li>
+                    <li><a href="../../pages/report.html"><i class="fas fa-chevron-right"></i> Report an Issue</a></li>
+                    <li><a href="../safety-tips.html"><i class="fas fa-chevron-right"></i> Safety Tips</a></li>
+                </ul>
+            </div>
+
+            <!-- Column 4: Legal -->
+            <div class="footer-column">
+                <h3>Legal</h3>
+                <ul class="footer-links">
+                    <li><a href="../about.html"><i class="fas fa-chevron-right"></i> About Us</a></li>
+					<li><a href="../seller-agreement.html"><i class="fas fa-chevron-right"></i> Seller Agreement</a></li>
+                    <li><a href="../terms-of-service.html"><i class="fas fa-chevron-right"></i> Terms of Service</a></li>
+                    <li><a href="../privacy-policy.html"><i class="fas fa-chevron-right"></i> Privacy Policy</a></li>
+                    <li><a href="../cookies-policy.html"><i class="fas fa-chevron-right"></i> Cookie Policy</a></li>
+                    <li><a href="../disclaimer.html"><i class="fas fa-chevron-right"></i> Platform Disclaimer</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="copyright">
+            &copy; 2025 UnityXhub. All rights reserved.
+        </div>
+    </footer>
+
+    <!-- Load Scripts -->
+    <script src="../../js/cart.js"></script>
+    <script src="../../js/main.js"></script>
+    <script>
+        // Update cart badge on load
+        document.addEventListener('DOMContentLoaded', () => {
+            const badge = document.getElementById('cartBadge');
+            const cart = JSON.parse(localStorage.getItem('unityxhub_cart')) || [];
+            const count = cart.reduce((sum, item) => sum + item.quantity, 0);
+            if (badge) {
+                badge.textContent = count;
+                badge.style.display = count > 0 ? 'flex' : 'none';
+            }
+
+            // Update heart icons based on wishlist state
+            updateWishlistIcons();
+        });
+
+        // Compare Confirmation Modal
+        const compareModal = document.getElementById('compareModal');
+        const goToCompareBtn = document.getElementById('goToCompareBtn');
+        const cancelCompareBtn = document.getElementById('cancelCompareBtn');
+
+        // Add to Compare with Pop-Up
+        function addToCompare(productId) {
+            let compareList = JSON.parse(localStorage.getItem('unityxhub_compare')) || [];
+            
+            if (compareList.includes(productId)) {
+                alert(`${productId} is already in comparison list.`);
+                return;
+            }
+
+            compareList.push(productId);
+            localStorage.setItem('unityxhub_compare', JSON.stringify(compareList));
+
+            // Show notification
+            const notification = document.getElementById('cartNotification');
+            notification.querySelector('span').textContent = `${productId} added to compare list!`;
+            notification.classList.add('show');
+            setTimeout(() => notification.classList.remove('show'), 3000);
+
+            // If 2 or more items, show pop-up
+            if (compareList.length >= 2) {
+                compareModal.style.display = 'flex';
+            }
+        }
+
+        // Go to compare page
+        goToCompareBtn.onclick = () => {
+            compareModal.style.display = 'none';
+            window.location.href = 'compare.html';
+        };
+
+        cancelCompareBtn.onclick = () => {
+            compareModal.style.display = 'none';
+        };
+
+        // Close modal if clicked outside
+        window.onclick = (e) => {
+            if (e.target === compareModal) {
+                compareModal.style.display = 'none';
+            }
+        };
+
+        // ✅ Add to Wishlist with Toggle
+        function addToWishlist(productId) {
+            const allProducts = {
+                'iphone15': { name: 'New iPhone 15 128GB' },
+                'airpods': { name: 'AirPods Pro 2nd Gen' },
+                'smartwatch': { name: 'Fitness Tracker Pro' }
+            };
+
+            const product = allProducts[productId];
+            if (!product) return;
+
+            let wishlist = JSON.parse(localStorage.getItem('unityxhub_wishlist')) || [];
+            const index = wishlist.findIndex(p => p.id === productId);
+
+            if (index > -1) {
+                // Remove from wishlist
+                wishlist.splice(index, 1);
+                alert(`${product.name} removed from wishlist.`);
+            } else {
+                // Add to wishlist
+                wishlist.push({ id: productId, name: product.name });
+                alert(`${product.name} added to wishlist!`);
+            }
+
+            localStorage.setItem('unityxhub_wishlist', JSON.stringify(wishlist));
+
+            // Update notification
+            const notification = document.getElementById('cartNotification');
+            notification.querySelector('span').textContent = index > -1 
+                ? `${product.name} removed from wishlist.` 
+                : `${product.name} added to wishlist!`;
+            notification.classList.add('show');
+            setTimeout(() => notification.classList.remove('show'), 3000);
+
+            // Update heart icon
+            updateWishlistIcons();
+        }
+
+        // Update all heart icons based on wishlist state
+        function updateWishlistIcons() {
+            const wishlist = JSON.parse(localStorage.getItem('unityxhub_wishlist')) || [];
+            document.querySelectorAll('.wishlist-btn').forEach(btn => {
+                const productId = btn.getAttribute('onclick').match(/'(.+?)'/)[1];
+                const icon = btn.querySelector('i');
+                if (wishlist.some(p => p.id === productId)) {
+                    icon.className = 'fas fa-heart';
+                    icon.style.color = '#d32f2f';
+                } else {
+                    icon.className = 'far fa-heart';
+                    icon.style.color = '';
+                }
+            });
+        }
+    </script>
+</body>
+</html>

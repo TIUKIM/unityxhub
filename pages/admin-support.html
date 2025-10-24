@@ -1,0 +1,4 @@
+const tickets = JSON.parse(localStorage.getItem('unityxhub_support_tickets') || '[]');
+tickets.forEach(t => {
+    console.log(`[${t.timestamp}] ${t.message}`);
+});

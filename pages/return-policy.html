@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Return & Refund Policy – UnityXhub</title>
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+
+    <!-- Reuse Global CSS -->
+    <link rel="stylesheet" href="../css/style.css">
+
+    <style>
+        /* Page Layout */
+        main {
+            max-width: 1200px;
+            margin: 30px auto;
+            padding: 20px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .policy-container h1 {
+            text-align: center;
+            color: var(--dark);
+            margin-bottom: 10px;
+        }
+
+        .policy-subtitle {
+            text-align: center;
+            color: #666;
+            font-size: 1.1rem;
+            margin-bottom: 30px;
+        }
+
+		/* Search Bar */
+        .search-policy {
+            width: 100%;
+            padding: 12px 20px;
+            margin: 20px 0;
+            border: 1px solid var(--gray);
+            border-radius: 8px;
+            font-size: 1rem;
+            outline: none;
+        }
+		
+        /* Accordion Styling */
+        .policy-item {
+            border-bottom: 1px solid #eee;
+            margin-bottom: 10px;
+        }
+
+        .policy-question {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #d32f2f;
+            padding: 15px;
+            background: #ffebee;
+            border-radius: 8px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background 0.3s ease;
+        }
+
+        .policy-question:hover {
+            background: #ffcdd2;
+        }
+
+        .policy-answer {
+            padding: 0 15px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease, padding 0.4s ease;
+            color: var(--dark);
+            line-height: 1.6;
+        }
+
+        .policy-answer.show {
+            padding: 15px;
+            max-height: 1000px;
+        }
+
+        .policy-number {
+            background: #d32f2f;
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.9rem;
+            margin-right: 10px;
+        }
+
+        /* Contact Section */
+        .contact-support {
+            text-align: center;
+            padding: 30px;
+            background: #e3f2fd;
+            border-radius: 12px;
+            margin-top: 30px;
+            border: 1px dashed #2196f3;
+        }
+
+        .contact-support p {
+            margin: 10px 0;
+            color: #333;
+        }
+
+        .contact-support i {
+            color: #2196f3;
+            margin-right: 5px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="header-container">
+            <div class="logo-section">
+                <div class="site-title">UnityXhub</div>
+                <div class="slogan">Return Policy</div>
+            </div>
+            <div class="search-bar">
+                <input type="text" placeholder="Search policies..." id="policySearch">
+                <div class="search-icon"><i class="fas fa-search"></i></div>
+            </div>
+            <div class="auth-buttons">
+                <a href="../../index.html" class="btn btn-outline"><i class="fas fa-home"></i> Home</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Navigation Tabs -->
+    <div class="nav-tabs">
+        <div class="tabs-container">
+            <a href="../index.html"><i class="fas fa-home"></i> Home</a>
+            <a href="../pages/seller/shopping.html"><i class="fas fa-shopping-cart"></i> Shopping</a>
+            <a href="../pages/jobs/job.html"><i class="fas fa-briefcase"></i> Jobs</a>
+            <a href="../pages/freelancer/freelancer-seller-dashboard.html"><i class="fas fa-hammer"></i> Freelance</a>
+            <a href="../pages/classifiedads/classifieds.html"><i class="fas fa-ad"></i> Classifieds</a>
+            <a href="#" class="active"><i class="fas fa-exchange-alt"></i> Returns</a>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <main>
+        <div class="policy-container">
+            <h1>🛍️ UnityXhub Return & Refund Policy</h1>
+            <p class="policy-subtitle">Last Updated: October 22, 2025</p>
+
+            <!-- Search -->
+            <input type="text" class="search-faq" id="policySearch" placeholder="Type to search any section...">
+
+            <!-- Accordion Policy List -->
+            <div id="policyList">
+                <!-- Will be filled by JS -->
+            </div>
+
+            <!-- Contact Support -->
+            <div class="contact-support">
+                <p><i class="fas fa-envelope"></i> support@unityxhub.com.ph</p>
+                <p><i class="fas fa-phone"></i> +63 9XX XXX XXXX</p>
+                <p><i class="fas fa-map-marker-alt"></i> Manila, Philippines</p>
+                <p>🕒 Response Time: Within 24–48 hours</p>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <!-- Column 1: About UnityXhub -->
+            <div class="footer-column">
+                <h3>UnityXhub</h3>
+                <p>Your one-stop digital ecosystem for shopping, jobs, business services, and community connections. Built by Filipinos for the global economy.</p>
+                <div class="payment-methods">
+                    <div class="payment-method">Visa</div>
+                    <div class="payment-method">MC</div>
+                    <div class="payment-method">PayPal</div>
+                    <div class="payment-method">GCash</div>
+                    <div class="payment-method">Bank</div>
+                </div>
+            </div>
+
+            <!-- Column 2: Quick Links -->
+            <div class="footer-column">
+                <h3>Quick Links</h3>
+                <ul class="footer-links">
+                    <li><a href="../../index.html"><i class="fas fa-chevron-right"></i> Home</a></li>
+                    <li><a href="../../help-center.html"><i class="fas fa-chevron-right"></i> Help Center</a></li>
+                    <li><a href="../../terms-of-service.html"><i class="fas fa-chevron-right"></i> Terms of Service</a></li>
+                    <li><a href="../../privacy-policy.html"><i class="fas fa-chevron-right"></i> Privacy Policy</a></li>
+                    <li><a href="../../disclaimer.html"><i class="fas fa-exclamation-triangle"></i> Platform Disclaimer</a></li>
+                </ul>
+            </div>
+
+            <!-- Column 3: Support -->
+            <div class="footer-column">
+                <h3>Support</h3>
+                <ul class="footer-links">
+                    <li><a href="../../report-issue.html"><i class="fas fa-chevron-right"></i> Report an Issue</a></li>
+                    <li><a href="../../safety-tips.html"><i class="fas fa-chevron-right"></i> Safety Tips</a></li>
+                    <li><a href="../../contact.html"><i class="fas fa-chevron-right"></i> Contact Us</a></li>
+                    <li><a href="../../seller-guidelines.html"><i class="fas fa-chevron-right"></i> Seller Guidelines</a></li>
+                    <li><a href="../../buyer-protection.html"><i class="fas fa-chevron-right"></i> Buyer Protection</a></li>
+                </ul>
+            </div>
+
+            <!-- Column 4: Legal -->
+            <div class="footer-column">
+                <h3>Legal</h3>
+                <ul class="footer-links">
+                    <li><a href="../../terms-of-service.html"><i class="fas fa-chevron-right"></i> Terms of Service</a></li>
+                    <li><a href="../../privacy-policy.html"><i class="fas fa-chevron-right"></i> Privacy Policy</a></li>
+                    <li><a href="../../cookies-policy.html"><i class="fas fa-chevron-right"></i> Cookie Policy</a></li>
+                    <li><a href="../../disclaimer.html"><i class="fas fa-exclamation-triangle"></i> Platform Disclaimer</a></li>
+                    <li><a href="../../seller-agreement.html"><i class="fas fa-chevron-right"></i> Seller Agreement</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="copyright">
+            &copy; 2025 UnityXhub. All rights reserved. UnityXhub was built by Filipinos, for a global digital economy.
+        </div>
+    </footer>
+
+    <!-- Load Scripts -->
+    <script src="../js/main.js"></script>
+    <script>
+        // Full Return Policy Data
+        const policy = [
+            {
+                q: "Purpose",
+                a: "This Return & Refund Policy outlines the procedures and conditions for returning or requesting a refund for products and services purchased through the UnityXhub platform.<br><br>Our goal is to protect both Buyers and Sellers while maintaining fairness and transparency.<br><strong>💬 We help connect — but we don’t control the transaction. Our role is to ensure safety, not take sides.</strong>"
+            },
+            {
+                q: "General Policy",
+                a: "UnityXhub acts as a digital intermediary — not the seller or manufacturer.<br>All return or refund requests must comply with:<br>• The Seller’s return policy (posted on their listing page)<br>• The Philippine Consumer Act (RA 7394)<br>• And this Platform Policy<br><strong>💬 UnityXhub reserves the right to mediate disputes, but final refund decisions rest with the Seller, unless proven fraudulent.</strong>"
+            },
+            {
+                q: "Eligibility for Returns",
+                a: "A return or refund may be requested if:<br>• ❌ The product received is defective, damaged, or not as described<br>• ❌ The product was never delivered or lost during shipping<br>• ❌ The wrong item was received<br>• ❌ The service was not rendered (for service-based sellers)<br><br>To qualify, the Buyer must:<br>• File a report within 3–7 days of delivery or completion<br>• Provide clear photo or video proof of the issue<br>• Keep all receipts, order IDs, and chat records<br><strong>💬 Honesty and documentation protect everyone.</strong>"
+            },
+            {
+                q: "Non-Returnable Items",
+                a: "Some items cannot be returned or refunded for safety or regulatory reasons:<br>• Perishable goods (food, beverages, plants)<br>• Digital products (e.g., eBooks, software, digital art)<br>• Custom or personalized orders<br>• Services that have already started or been completed<br>• Health and hygiene items (cosmetics, underwear, skincare, etc.)<br>• Classified ads or job posts (once published)<br><strong>💬 “Change of mind” is not a valid reason for return unless the Seller allows it.</strong>"
+            },
+            {
+                q: "Refund Process",
+                a: "1. Buyer submits a refund or dispute report via:<br>&nbsp;&nbsp;o Report an Issue form, or<br>&nbsp;&nbsp;o Email: support@unityxhub.com.ph<br>2. UnityXhub reviews the request within 3–5 business days.<br>3. The Seller is notified and must respond within 3 business days.<br>4. If approved, refunds are processed via the original payment method (e-wallet, bank, or COD).<br><strong>💬 Escrow-protected payments (for freelancers or stores) are released only after Buyer confirmation.</strong>"
+            },
+            {
+                q: "Seller Responsibilities",
+                a: "Sellers must:<br>• Provide accurate product descriptions and photos<br>• Indicate their own return window (minimum 3 days recommended)<br>• Accept valid returns and cooperate with dispute investigations<br>• Refund in full if proven at fault (including shipping fees)<br><strong>💬 Non-compliant Sellers risk suspension or account termination.</strong>"
+            },
+            {
+                q: "Buyer Responsibilities",
+                a: "Buyers must:<br>• Inspect items immediately upon receipt<br>• Keep original packaging for return shipment<br>• Not damage or use the item before filing a claim<br>• Avoid false or malicious refund claims<br><strong>💬 Fraudulent refund requests may lead to permanent account bans.</strong>"
+            },
+            {
+                q: "Shipping & Return Costs",
+                a: "• If the Seller is at fault (defective, wrong, or missing item): Seller pays return shipping.<br>• If Buyer simply changes their mind or refuses delivery without reason: Buyer pays shipping.<br>• For COD disputes, UnityXhub may temporarily hold funds until the case is resolved.<br><strong>💬 We believe in fairness — whoever is responsible, pays the cost.</strong>"
+            },
+            {
+                q: "Dispute Mediation",
+                a: "UnityXhub may step in as a neutral mediator if:<br>• The Buyer and Seller cannot reach an agreement<br>• Either party violates platform rules<br>UnityXhub’s decision is final after review of all evidence.<br>However, UnityXhub holds no financial liability for losses caused by user actions.<br><strong>💬 Our goal is resolution — not replacement of responsibility.</strong>"
+            },
+            {
+                q: "Platform Safety Commitment",
+                a: "UnityXhub implements:<br>• Escrow-style fund holding for new or unverified Sellers<br>• Verified ID (KYC) for business accounts<br>• Fraud and scam detection tools<br>• 24/7 report handling via support@unityxhub.com.ph<br><strong>💬 Your account is your responsibility — but UnityXhub provides layers of protection to keep it safe.</strong>"
+            },
+            {
+                q: "Contact Us",
+                a: "For any refund, return, or dispute inquiries:<br>📧 support@unityxhub.com.ph<br>📞 +63 9XX XXX XXXX<br>📍 Manila, Philippines<br>🕒 Response Time: Within 24–48 hours<br><br><strong>💬 We’re not just a marketplace — we’re your growth partner.</strong>"
+            }
+        ];
+
+        // Render Policy List
+        const policyList = document.getElementById('policyList');
+        const searchInput = document.getElementById('policySearch');
+
+        function renderPolicy(items) {
+            policyList.innerHTML = '';
+            items.forEach((item, index) => {
+                const policyItem = document.createElement('div');
+                policyItem.className = 'policy-item';
+
+                policyItem.innerHTML = `
+                    <div class="policy-question" onclick="togglePolicy(${index})">
+                        <div style="display:flex;align-items:center;">
+                            <span class="policy-number">${index + 1}</span>
+                            ${item.q}
+                        </div>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="policy-answer" id="answer-${index}">
+                        ${item.a}
+                    </div>
+                `;
+                policyList.appendChild(policyItem);
+            });
+        }
+
+        // Toggle Policy Answer
+        window.togglePolicy = function(index) {
+            const answer = document.getElementById(`answer-${index}`);
+            const icon = answer.previousElementSibling.querySelector('i');
+
+            answer.classList.toggle('show');
+            icon.classList.toggle('fa-chevron-down');
+            icon.classList.toggle('fa-chevron-up');
+        };
+
+        // Search Filter
+        searchInput?.addEventListener('input', () => {
+            const term = searchInput.value.toLowerCase();
+            const filtered = policy.filter(p => 
+                p.q.toLowerCase().includes(term) || 
+                p.a.toLowerCase().includes(term)
+            );
+            renderPolicy(filtered);
+        });
+
+        // Initial Render
+        document.addEventListener('DOMContentLoaded', () => {
+            renderPolicy(policy);
+        });
+    </script>
+</body>
+</html>

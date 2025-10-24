@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Welcome to UnityXhub – Your Digital Home</title>
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+
+    <!-- Reuse Global CSS -->
+    <link rel="stylesheet" href="../css/style.css">
+
+    <style>
+        /* Animated Gradient Background */
+        body {
+            background: linear-gradient(-45deg, #ff6b6b, #4ecdc4, #45b7d1, #96ceb4);
+            background-size: 400% 400%;
+            animation: gradientShift 15s ease infinite;
+            min-height: 100vh;
+            margin: 0;
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        main {
+            max-width: 1200px;
+            margin: 30px auto;
+            padding: 30px;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.3);
+        }
+
+        .welcome-container h1 {
+            text-align: center;
+            color: #d32f2f;
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .welcome-subtitle {
+            text-align: center;
+            color: #2e7d32;
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            font-weight: 600;
+        }
+
+        /* Section Styling */
+        .welcome-section {
+            margin-bottom: 30px;
+            padding: 20px;
+            border-left: 5px solid var(--primary);
+            background: #fff8e1;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease;
+        }
+
+        .welcome-section:hover {
+            transform: translateY(-5px);
+        }
+
+        .section-title {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.3rem;
+            color: var(--dark);
+            margin-bottom: 15px;
+        }
+
+        .section-icon {
+            background: var(--primary);
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+        }
+
+        .section-content p {
+            margin: 10px 0;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        .section-content ul {
+            padding-left: 20px;
+            margin: 10px 0;
+            color: #333;
+        }
+
+        .highlight-box {
+            background: #e8f5e9;
+            border: 2px dashed #4caf50;
+            padding: 20px;
+            border-radius: 12px;
+            text-align: center;
+            margin: 20px 0;
+            color: #1b5e20;
+            font-weight: 600;
+        }
+
+        .agree-btn {
+            display: block;
+            width: 100%;
+            padding: 16px;
+            background: linear-gradient(to right, #d32f2f, #b71c1c);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-size: 1.2rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 30px;
+            box-shadow: 0 6px 15px rgba(211, 47, 47, 0.3);
+        }
+
+        .agree-btn:hover {
+            transform: scale(1.02);
+            box-shadow: 0 8px 20px rgba(211, 47, 47, 0.4);
+        }
+
+        .footer-link-note {
+            text-align: center;
+            margin-top: 20px;
+            color: #666;
+            font-style: italic;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            main {
+                margin: 15px;
+                padding: 20px;
+            }
+            .welcome-container h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="header-container">
+            <div class="logo-section">
+                <div class="site-title">UnityXhub</div>
+                <div class="slogan">Welcome</div>
+            </div>
+            <div class="auth-buttons">
+                <a href="../index.html" class="btn btn-outline"><i class="fas fa-home"></i> Home</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Navigation Tabs -->
+    <div class="nav-tabs">
+        <div class="tabs-container">
+            <a href="../index.html"><i class="fas fa-home"></i> Home</a>
+            <a href="../pages/seller/shopping.html"><i class="fas fa-shopping-cart"></i> Shopping</a>
+            <a href="../pages/jobs/job.html"><i class="fas fa-briefcase"></i> Jobs</a>
+            <a href="../pages/freelancer/freelance-newsfeed.html"><i class="fas fa-hammer"></i> Freelance</a>
+            <a href="../pages/classifiedads/classifieds.html"><i class="fas fa-ad"></i> Classifieds</a>
+            <a href="#" class="active"><i class="fas fa-gift"></i> Welcome</a>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <main>
+        <div class="welcome-container">
+            <h1>🎉 Welcome to UnityXhub.com</h1>
+            <p class="welcome-subtitle">Your One Stop for Everything Online</p>
+
+            <p style="text-align:center; font-size:1.1rem; color:#555;">
+                You’re not just signing up.<br>
+                You’re joining a digital ecosystem — where buyers, sellers, freelancers, job seekers, and businesses grow together.
+            </p>
+
+            <div class="highlight-box">
+                ✅ By clicking “Agree”, you accept:<br>
+                • This Quick User Agreement (Friendly Summary)<br>
+                • And the full <a href="../../terms-of-service.html" style="color:#d32f2f;">Universal User Agreement</a> (Legal Version)
+            </div>
+
+            <!-- Section 1 -->
+            <div class="welcome-section">
+                <div class="section-title">
+                    <div class="section-icon"><i class="fas fa-store"></i></div>
+                    <h2>1. 🏬 We’re Just the Platform</h2>
+                </div>
+                <div class="section-content">
+                    <p>Think of UnityXhub as a digital mall — not the store.</p>
+                    <p>You post, buy, sell, hire, or advertise.</p>
+                    <p><strong>But you’re responsible for your own deals.</strong></p>
+                    <p><em>💬 We don’t sell. You do.</em></p>
+                </div>
+            </div>
+
+            <!-- Section 2 -->
+            <div class="welcome-section">
+                <div class="section-title">
+                    <div class="section-icon"><i class="fas fa-coins"></i></div>
+                    <h2>2. 💵 How We Earn</h2>
+                </div>
+                <div class="section-content">
+                    <p>To keep UnityXhub running, we charge small, transparent fees:</p>
+                    <ul>
+                        <li>✅ Product Sales – Small commission per sale</li>
+                        <li>✅ Ads – Fee for classifieds or promotions</li>
+                        <li>✅ Job Postings – Employers pay to list jobs</li>
+                        <li>✅ Freelance Services – Commission on completed projects</li>
+                        <li>✅ Business Services – Rental fees for digital space</li>
+                    </ul>
+                    <p><em>💬 No hidden charges. No surprise fees. We only charge for what you use.</em></p>
+                </div>
+            </div>
+
+            <!-- Section 3 -->
+            <div class="welcome-section">
+                <div class="section-title">
+                    <div class="section-icon"><i class="fas fa-wallet"></i></div>
+                    <h2>3. 💰 Payments</h2>
+                </div>
+                <div class="section-content">
+                    <p>We support:</p>
+                    <ul>
+                        <li>✅ Cash on Delivery (COD)</li>
+                        <li>✅ E-wallets (GCash, Maya, GrabPay)</li>
+                        <li>✅ Debit/Credit Cards (Visa, Mastercard)</li>
+                        <li>✅ Bank Transfers</li>
+                    </ul>
+                    <p><strong>⚠️ Sellers must deliver. Buyers must pay.</strong></p>
+                    <p><em>💬 We don’t fix broken promises — but we’ll help if things go wrong.</em></p>
+                </div>
+            </div>
+
+            <!-- Section 4 -->
+            <div class="welcome-section">
+                <div class="section-title">
+                    <div class="section-icon"><i class="fas fa-handshake"></i></div>
+                    <h2>4. 🤝 Be Honest</h2>
+                </div>
+                <div class="section-content">
+                    <p>Post only:</p>
+                    <ul>
+                        <li>✅ Real, safe, legal products/services</li>
+                        <li>✅ Truthful job listings</li>
+                        <li>✅ Accurate business info</li>
+                    </ul>
+                    <p><strong>❌ No scams, spam, harassment, or illegal content.</strong></p>
+                    <p><em>💬 Be real. Be fair. Be kind.</em></p>
+                </div>
+            </div>
+
+            <!-- Section 5 -->
+            <div class="welcome-section">
+                <div class="section-title">
+                    <div class="section-icon"><i class="fas fa-shield-alt"></i></div>
+                    <h2>5. 🔒 Your Data Is Safe</h2>
+                </div>
+                <div class="section-content">
+                    <p>We follow the Philippine Data Privacy Act (RA 10173) and GDPR.</p>
+                    <ul>
+                        <li>✅ We don’t sell your info</li>
+                        <li>✅ You can request to edit or delete your data anytime</li>
+                        <li>✅ We protect your privacy with encryption and security</li>
+                    </ul>
+                    <p><em>💬 Your data belongs to you — we’re just its guardian.</em></p>
+                </div>
+            </div>
+
+            <!-- Section 6 -->
+            <div class="welcome-section">
+                <div class="section-title">
+                    <div class="section-icon"><i class="fas fa-balance-scale"></i></div>
+                    <h2>6. ⚖️ Play Fair or Get Banned</h2>
+                </div>
+                <div class="section-content">
+                    <p>Break the rules? We can:</p>
+                    <ul>
+                        <li>❌ Suspend your account</li>
+                        <li>❌ Remove your listings</li>
+                        <li>❌ Ban you permanently</li>
+                    </ul>
+                    <p><strong>❌ Fraud, scams, fake jobs, spam, abuse — no exceptions.</strong></p>
+                    <p><em>💬 We protect the community — even when it costs us.</em></p>
+                </div>
+            </div>
+
+            <!-- Section 7 -->
+            <div class="welcome-section">
+                <div class="section-title">
+                    <div class="section-icon"><i class="fas fa-flag"></i></div>
+                    <h2>7. 🇵🇭 Philippine Law Applies</h2>
+                </div>
+                <div class="section-content">
+                    <p>Since we’re based in the Philippines, this agreement follows Philippine law.</p>
+                    <p>Any disputes will be handled under local jurisdiction.</p>
+                    <p><em>💬 We stand by our home.</em></p>
+                </div>
+            </div>
+
+            <!-- Final Message -->
+            <div class="welcome-section">
+                <div class="section-title">
+                    <div class="section-icon"><i class="fas fa-heart"></i></div>
+                    <h2>💬 You’re Not Just Joining a Platform</h2>
+                </div>
+                <div class="section-content">
+                    <p style="font-size:1.2rem; color:#d32f2f; font-weight:600;">
+                        You’re joining a movement.
+                    </p>
+                    <p style="font-size:1.4rem; color:#1b5e20;">
+                        💥 Welcome to UnityXhub — where everyone grows, creates, and makes a change.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Agree Button -->
+            <button class="agree-btn" onclick="alert('✅ Thank you! You are now part of the UnityXhub family.')">
+                I AGREE — LET’S GROW TOGETHER!
+            </button>
+
+            <p class="footer-link-note">
+                This page is linked from the footer as "User Agreement".
+            </p>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <!-- Column 1: About UnityXhub -->
+            <div class="footer-column">
+                <h3>UnityXhub</h3>
+                <p>Your one-stop digital ecosystem for shopping, jobs, business services, and community connections. Built by Filipinos for the global economy.</p>
+                <div class="payment-methods">
+                    <div class="payment-method">Visa</div>
+                    <div class="payment-method">MC</div>
+                    <div class="payment-method">PayPal</div>
+                    <div class="payment-method">GCash</div>
+                    <div class="payment-method">Bank</div>
+                </div>
+            </div>
+
+            <!-- Column 2: Quick Links -->
+            <div class="footer-column">
+                <h3>Quick Links</h3>
+                <ul class="footer-links">
+                    <li><a href="../../index.html"><i class="fas fa-chevron-right"></i> Home</a></li>
+                    <li><a href="../shopping.html"><i class="fas fa-chevron-right"></i> Shopping Marketplace</a></li>
+                    <li><a href="../job/job-post.html"><i class="fas fa-chevron-right"></i> Post a Job</a></li>
+                    <li><a href="../classifieds/classifieds-post.html"><i class="fas fa-chevron-right"></i> Post an Ad</a></li>
+                    <li><a href="../business/business-services-signup.html"><i class="fas fa-chevron-right"></i> Rent Business Space</a></li>
+                </ul>
+            </div>
+
+            <!-- Column 3: Support -->
+            <div class="footer-column">
+                <h3>Support</h3>
+                <ul class="footer-links">
+                    <li><a href="../../help-center.html"><i class="fas fa-chevron-right"></i> Help Center</a></li>
+                    <li><a href="../../report-issue.html"><i class="fas fa-chevron-right"></i> Report an Issue</a></li>
+                    <li><a href="../../safety-tips.html"><i class="fas fa-chevron-right"></i> Safety Tips</a></li>
+                    <li><a href="../../contact.html"><i class="fas fa-chevron-right"></i> Contact Us</a></li>
+                    <li><a href="../../community-guidelines.html"><i class="fas fa-chevron-right"></i> Community Guidelines</a></li>
+                </ul>
+            </div>
+
+            <!-- Column 4: Legal -->
+            <div class="footer-column">
+                <h3>Legal</h3>
+                <ul class="footer-links">
+                    <li><a href="../pages/terms-of-service.html"><i class="fas fa-chevron-right"></i> Terms of Service</a></li>
+                    <li><a href="../pages/privacy-policy.html"><i class="fas fa-chevron-right"></i> Privacy Policy</a></li>
+                    <li><a href="../pages/cookies-policy.html"><i class="fas fa-chevron-right"></i> Cookie Policy</a></li>
+                    <li><a href="../pages/disclaimer.html"><i class="fas fa-chevron-right"></i> Platform Disclaimer</a></li>
+                    <li><a href="../pages/seller-agreement.html"><i class="fas fa-chevron-right"></i> Seller Agreement</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="copyright">
+            &copy; 2025 UnityXhub. All rights reserved. UnityXhub was built by Filipinos, for a global digital economy.
+        </div>
+    </footer>
+
+    <!-- Load Scripts -->
+    <script src="../js/main.js"></script>
+</body>
+</html>

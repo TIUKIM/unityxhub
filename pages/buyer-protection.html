@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Buyer Protection – UnityXhub</title>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Reuse Global CSS -->
+    <link rel="stylesheet" href="../css/style.css">
+    <style>
+        .protection-container {
+            max-width: 900px;
+            margin: 50px auto;
+            padding: 30px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+            line-height: 1.8;
+        }
+
+        .section-title {
+            font-size: 1.6rem;
+            color: var(--secondary);
+            margin: 30px 0 20px;
+            font-weight: 700;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--gray);
+        }
+
+        .highlight {
+            color: var(--primary);
+            font-weight: bold;
+        }
+
+        ul, ol {
+            margin: 10px 0 10px 20px;
+        }
+
+        .guarantee-card {
+            background: #e3f2fd;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+            border-left: 5px solid var(--primary);
+        }
+
+        .warning-box {
+            background: #f8d7da;
+            color: #721c24;
+            padding: 20px;
+            border-radius: 12px;
+            margin: 30px 0;
+            border: 1px solid #f5c6cb;
+        }
+
+        .contact-info {
+            background: #d4edda;
+            padding: 20px;
+            border-radius: 12px;
+            margin: 30px 0;
+            text-align: center;
+            color: #155724;
+        }
+
+        .promise {
+            background: #fff3cd;
+            padding: 20px;
+            border-radius: 12px;
+            margin: 30px 0;
+            text-align: center;
+            font-style: italic;
+            color: #856404;
+            border-left: 4px solid #ffc107;
+        }
+
+        .icon-list {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin: 10px 0;
+        }
+
+        .icon-list i {
+            color: var(--success);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="header-container">
+            <div class="logo-section">
+                <div class="site-title">UnityXhub</div>
+                <div class="slogan">Your One Stop for Everything Online</div>
+            </div>
+            <button class="btn btn-outline" onclick="history.back()">← Back</button>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="protection-container">
+        <h2 class="section-title"><i class="fas fa-shield-alt"></i> Buyer Protection Program</h2>
+        <p><strong>Last Updated:</strong> <span class="highlight">[Insert Date]</span></p>
+
+        <p><strong>At UnityXhub, your trust means everything to us.</strong><br>
+        That’s why we’ve built a Buyer Protection Program to make sure you shop with confidence.</p>
+
+        <!-- What We Guarantee -->
+        <div class="clause">
+            <h3 class="section-title">✅ What We Guarantee</h3>
+
+            <!-- Secure Payments -->
+            <div class="guarantee-card">
+                <div class="icon-list">
+                    <i class="fas fa-lock"></i>
+                    <strong>1. Secure Payments</strong>
+                </div>
+                <p>Your money is safe. Payments are only released to the Seller after:</p>
+                <ul>
+                    <li>The item is delivered and confirmed, OR</li>
+                    <li>The service/job is marked complete.</li>
+                </ul>
+                <p>This acts like escrow — protecting both buyer and seller.</p>
+            </div>
+
+            <!-- Full Refund Scenarios -->
+            <div class="guarantee-card">
+                <div class="icon-list">
+                    <i class="fas fa-undo"></i>
+                    <strong>2. Full Refund Scenarios</strong>
+                </div>
+                <p>You are eligible for a full refund if:</p>
+                <ul>
+                    <li>The item does not arrive</li>
+                    <li>The item is significantly different from the description</li>
+                    <li>The Seller fails to deliver a service/job</li>
+                </ul>
+            </div>
+
+            <!-- Dispute Resolution -->
+            <div class="guarantee-card">
+                <div class="icon-list">
+                    <i class="fas fa-gavel"></i>
+                    <strong>3. Dispute Resolution</strong>
+                </div>
+                <p>If something goes wrong:</p>
+                <ol>
+                    <li>Contact the Seller first to resolve the issue.</li>
+                    <li>If not resolved, open a dispute via UnityXhub Help Center.</li>
+                    <li>Our support team will mediate between both sides.</li>
+                </ol>
+            </div>
+
+            <!-- Safe COD -->
+            <div class="guarantee-card">
+                <div class="icon-list">
+                    <i class="fas fa-hand-holding-usd"></i>
+                    <strong>4. Safe COD (Cash on Delivery)</strong>
+                </div>
+                <p>For COD orders:</p>
+                <ul>
+                    <li>Only pay once you receive the item.</li>
+                    <li>Refusal to pay without valid reason may lead to account suspension.</li>
+                </ul>
+            </div>
+
+            <!-- Transparent Refund Process -->
+            <div class="guarantee-card">
+                <div class="icon-list">
+                    <i class="fas fa-sync-alt"></i>
+                    <strong>5. Transparent Refund Process</strong>
+                </div>
+                <p>Refunds are processed through the same payment method used:</p>
+                <ul>
+                    <li><strong>COD:</strong> via bank transfer or e-wallet refund</li>
+                    <li><strong>E-wallets:</strong> reversed to your account</li>
+                    <li><strong>Cards/Bank transfer:</strong> refunded to original account</li>
+                </ul>
+                <p><strong>Refunds usually take 3–7 business days.</strong></p>
+            </div>
+        </div>
+
+        <!-- What We Don't Cover -->
+        <div class="warning-box">
+            <h3>⚠️ What We Don’t Cover</h3>
+            <ul>
+                <li>Transactions made outside UnityXhub</li>
+                <li>Change of mind (unless Seller accepts returns)</li>
+                <li>Items that match the listing description but are no longer wanted</li>
+            </ul>
+        </div>
+
+        <!-- Contact Support -->
+        <div class="contact-info">
+            <h3><i class="fas fa-envelope"></i> Need Help?</h3>
+            <p>Email: <strong>support@unityxhub.com</strong></p>
+            <p>Live Chat: Available Mon–Fri, 9:00 AM – 6:00 PM PHT</p>
+        </div>
+
+        <!-- Final Promise -->
+        <div class="promise">
+            💬 <strong>UnityXhub Promise:</strong><br>
+            We don’t just connect buyers and sellers —<br>
+            we protect your journey from checkout to delivery.
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>UnityXhub</h3>
+                <p>Built by Filipinos, for a global digital economy.</p>
+            </div>
+            <div class="footer-column">
+                <h3>Support</h3>
+                <ul class="footer-links">
+                    <li><a href="help-center.html"><i class="fas fa-chevron-right"></i> Help Center</a></li>
+                    <li><a href="contact.html"><i class="fas fa-chevron-right"></i> Contact Us</a></li>
+                    <li><a href="buyer-protection.html" class="active"><i class="fas fa-chevron-right"></i> Buyer Protection</a></li>
+                    <li><a href="#"><i class="fas fa-chevron-right"></i> Report an Issue</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Legal</h3>
+                <ul class="footer-links">
+                    <li><a href="terms-of-service.html"><i class="fas fa-chevron-right"></i> Terms of Service</a></li>
+                    <li><a href="privacy-policy.html"><i class="fas fa-chevron-right"></i> Privacy Policy</a></li>
+                    <li><a href="seller-agreement.html"><i class="fas fa-chevron-right"></i> Seller Agreement</a></li>
+                    <li><a href="buyer-agreement.html"><i class="fas fa-chevron-right"></i> Buyer Agreement</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="copyright">
+            &copy; 2025 UnityXhub. All rights reserved.
+        </div>
+    </footer>
+
+    <script>
+        // Optional: Add animation or chat trigger later
+    </script>
+</body>
+</html>

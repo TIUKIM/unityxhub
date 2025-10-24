@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>FAQ – UnityXhub</title>
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+
+    <!-- Reuse Global CSS -->
+    <link rel="stylesheet" href="../css/style.css">
+
+    <style>
+        /* Page Layout */
+        main {
+            max-width: 1200px;
+            margin: 30px auto;
+            padding: 20px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .faq-container h1 {
+            text-align: center;
+            color: var(--dark);
+            margin-bottom: 10px;
+        }
+
+        .faq-subtitle {
+            text-align: center;
+            color: #666;
+            font-size: 1.1rem;
+            margin-bottom: 30px;
+        }
+
+        /* Search Bar */
+        .search-faq {
+            width: 100%;
+            padding: 12px 20px;
+            margin: 20px 0;
+            border: 1px solid var(--gray);
+            border-radius: 8px;
+            font-size: 1rem;
+            outline: none;
+        }
+
+        /* Accordion Styling */
+        .faq-item {
+            border-bottom: 1px solid #eee;
+            margin-bottom: 10px;
+        }
+
+        .faq-question {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--primary);
+            padding: 15px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background 0.3s ease;
+        }
+
+        .faq-question:hover {
+            background: #e9ecef;
+        }
+
+        .faq-answer {
+            padding: 0 15px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease, padding 0.4s ease;
+            color: var(--dark);
+            line-height: 1.6;
+        }
+
+        .faq-answer.show {
+            padding: 15px;
+            max-height: 500px;
+        }
+
+        .faq-number {
+            background: var(--primary);
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.9rem;
+            margin-right: 10px;
+        }
+
+        /* Contact Section */
+        .contact-support {
+            text-align: center;
+            padding: 30px;
+            background: #fff3e0;
+            border-radius: 12px;
+            margin-top: 30px;
+            border: 1px dashed #ffccbc;
+        }
+
+        .contact-support p {
+            margin: 10px 0;
+            color: #333;
+        }
+
+        .contact-support i {
+            color: var(--primary);
+            margin-right: 5px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="header-container">
+            <div class="logo-section">
+                <div class="site-title">UnityXhub</div>
+                <div class="slogan">Help Center</div>
+            </div>
+            <div class="search-bar">
+                <input type="text" placeholder="Search FAQs..." id="faqSearch">
+                <div class="search-icon"><i class="fas fa-search"></i></div>
+            </div>
+            <div class="auth-buttons">
+                <a href="../../index.html" class="btn btn-outline"><i class="fas fa-home"></i> Home</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Navigation Tabs -->
+    <div class="nav-tabs">
+        <div class="tabs-container">
+            <a href="../index.html"><i class="fas fa-home"></i> Home</a>
+            <a href="../pages/seller/shopping.html"><i class="fas fa-shopping-cart"></i> Shopping</a>
+            <a href="../jobs/job.html"><i class="fas fa-briefcase"></i> Jobs</a>
+            <a href="../pages/freelancer/freelance-newsfeed.html"><i class="fas fa-hammer"></i> Freelance</a>
+            <a href="../pages/classifiedads/classifieds.html"><i class="fas fa-ad"></i> Classifieds</a>
+            <a href="#" class="active"><i class="fas fa-question-circle"></i> FAQ Help</a>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <main>
+        <div class="faq-container">
+            <h1>UnityXhub FAQ</h1>
+            <p class="faq-subtitle">Last Updated: October 22, 2025</p>
+
+            <!-- Search -->
+            <input type="text" class="search-faq" id="faqSearch" placeholder="Type to search any question...">
+
+            <!-- Accordion FAQ List -->
+            <div id="faqList">
+                <!-- Will be filled by JS -->
+            </div>
+
+            <!-- Contact Support -->
+            <div class="contact-support">
+                <p><i class="fas fa-envelope"></i> support@unityxhub.com.ph</p>
+                <p><i class="fas fa-phone"></i> +63 9XX XXX XXXX</p>
+                <p><i class="fas fa-map-marker-alt"></i> Manila, Philippines</p>
+                <p>We respond within 24–48 hours.</p>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <!-- Column 1: About UnityXhub -->
+            <div class="footer-column">
+                <h3>UnityXhub</h3>
+                <p>Your one-stop digital ecosystem for shopping, jobs, business services, and community connections. Built by Filipinos for the global economy.</p>
+                <div class="payment-methods">
+                    <div class="payment-method">Visa</div>
+                    <div class="payment-method">MC</div>
+                    <div class="payment-method">PayPal</div>
+                    <div class="payment-method">GCash</div>
+                    <div class="payment-method">Bank</div>
+                </div>
+            </div>
+
+            <!-- Column 2: Quick Links -->
+            <div class="footer-column">
+                <h3>Quick Links</h3>
+                <ul class="footer-links">
+                    <li><a href="../index.html"><i class="fas fa-chevron-right"></i> Home</a></li>
+                    <li><a href="../pages/seller/shopping.html"><i class="fas fa-chevron-right"></i> Shopping Marketplace</a></li>
+                    <li><a href="../pages/jobs/job-offer.html"><i class="fas fa-chevron-right"></i> Post a Job</a></li>
+                    <li><a href="../pages/classifiedads/classifieds-post.html"><i class="fas fa-chevron-right"></i> Post an Ad</a></li>
+                    <li><a href="../pages/business/business-post.html"><i class="fas fa-chevron-right"></i> Rent Business Space</a></li>
+                </ul>
+            </div>
+
+            <!-- Column 3: Support -->
+            <div class="footer-column">
+                <h3>Support</h3>
+                <ul class="footer-links">
+                    <li><a href="#"><i class="fas fa-chevron-right"></i> FAQ</a></li>
+                    <li><a href="../pages/report-issue.html"><i class="fas fa-chevron-right"></i> Report an Issue</a></li>
+                    <li><a href="../pages/safety-tips.html"><i class="fas fa-chevron-right"></i> Safety Tips</a></li>
+					<li><a href="../pages/return-policy.html"><i class="fas fa-chevron-right"></i> Return & Refund Policy</a></li>
+                    <li><a href="../pages/contact.html"><i class="fas fa-chevron-right"></i> Contact Us</a></li>
+                    <li><a href="../pages/community-guidelines.html"><i class="fas fa-chevron-right"></i> Community Guidelines</a></li>
+                </ul>
+            </div>
+
+            <!-- Column 4: Legal -->
+            <div class="footer-column">
+                <h3>Legal</h3>
+                <ul class="footer-links">
+                    <li><a href="../pages/terms-of-service.html"><i class="fas fa-chevron-right"></i> Terms of Service</a></li>
+                    <li><a href="../pages/privacy-policy.html"><i class="fas fa-chevron-right"></i> Privacy Policy</a></li>
+                    <li><a href="../pages/cookies-policy.html"><i class="fas fa-chevron-right"></i> Cookie Policy</a></li>
+                    <li><a href="../pages/disclaimer.html"><i class="fas fa-chevron-right"></i> Platform Disclaimer</a></li>
+                    <li><a href="../pages/seller-agreement.html"><i class="fas fa-chevron-right"></i> Seller Agreement</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="copyright">
+            &copy; 2025 UnityXhub. All rights reserved. UnityXhub was built by Filipinos, for a global digital economy.
+        </div>
+    </footer>
+
+    <!-- Load Scripts -->
+    <script src="../js/main.js"></script>
+    <script>
+        // Full FAQ Data
+        const faqs = [
+            {
+                q: "What is UnityXhub?",
+                a: "UnityXhub is a digital ecosystem where anyone can:<br>• Buy and sell products<br>• Offer or find services<br>• Post or apply for jobs<br>• Share classified ads (rentals, used goods, vehicles)<br>• Rent dedicated business space<br>We’re not a seller — we’re a platform.<br>You connect, grow, and succeed — on your terms."
+            },
+            {
+                q: "How does UnityXhub make money?",
+                a: "Like a modern mall, we earn from:<br>• ✅ Commission on successful sales<br>• ✅ Fees for premium listings, job posts, and classified ads<br>• ✅ Commission from completed freelance projects<br>• ✅ Rental fees for business spaces<br>All fees are transparent and deducted automatically.<br><strong>💬 We don’t profit from your success — we support it.</strong>"
+            },
+            {
+                q: "Do you sell products directly?",
+                a: "<strong>❌ No.</strong><br>We only provide the platform.<br>All transactions are user-to-user — between buyers and sellers, employers and freelancers, renters and tenants.<br>You control your business. We just give you the stage."
+            },
+            {
+                q: "What payment methods are supported?",
+                a: "✅ Cash on Delivery (COD)<br>✅ E-wallets (GCash, GrabPay, MAYA)<br>✅ Debit/Credit Cards (Visa, Mastercard)<br>✅ Bank Transfers<br>Payments go through secure third-party providers.<br>Funds are released after delivery or completion."
+            },
+            {
+                q: "Is posting free?",
+                a: "Some posts are free — like basic product listings or job applications.<br>But if you want:<br>• Premium visibility<br>• Featured placement<br>• Business space rental<br>Then a small fee applies.<br><strong>💬 Free to start. Paid to grow.</strong>"
+            },
+            {
+                q: "Who is responsible if something goes wrong?",
+                a: "Users are responsible for their own transactions.<br>UnityXhub is not liable for:<br>• Disputes<br>• Fraud<br>• Scams<br>• Defective items<br>• Failed services<br>We encourage:<br>• Clear communication<br>• Secure payments<br>• Record-keeping<br>Report any suspicious activity — we’ll help investigate."
+            },
+            {
+                q: "Can anyone use UnityXhub?",
+                a: "Yes — if you’re:<br>• 18 years old or older<br>• Committed to honesty and fairness<br>• Willing to follow our rules<br>No one is excluded — only those who break trust."
+            },
+            {
+                q: "Is my data safe?",
+                a: "✅ Yes.<br>We comply with:<br>• Philippine Data Privacy Act (RA 10173)<br>• GDPR (for global users)<br>Your information is encrypted, stored securely, and never sold.<br>You control your profile. You decide what to share."
+            },
+            {
+                q: "How do I resolve disputes?",
+                a: "Disputes must be handled directly between users.<br><strong>Steps:</strong><br>1. Communicate via UnityXhub messaging<br>2. Keep records of all transactions<br>3. If unresolved, report to admin<br>4. Use COD or escrow for high-value items<br><strong>💬 We’re here to help — but not to fix every problem.</strong>"
+            },
+            {
+                q: "How can I become a UnityXhub partner or agent?",
+                a: "We offer partnership and affiliate opportunities for qualified users.<br>Send your interest to partners@unityxhub.com.ph.<br><strong>💬 Let’s grow together — one hub, one vision.</strong>"
+            },
+            {
+                q: "How long does it take to activate my seller account?",
+                a: "After you register as a seller, please allow 2–3 business days for verification and dashboard activation.<br>You’ll receive an email once your account is live.<br><strong>💬 We review each seller carefully — to protect our buyers and your business reputation.</strong>"
+            },
+            {
+                q: "How are refunds processed?",
+                a: "Refunds depend on the seller’s return policy and Philippine consumer protection laws.<br>If approved, refunds are typically completed within 5–10 working days via your original payment method.<br><strong>💬 Always communicate with your seller first — we’re here to mediate if needed.</strong>"
+            },
+            {
+                q: "What should I do if I receive a fake or defective item?",
+                a: "1. Contact the seller immediately via UnityXhub chat.<br>2. Keep all receipts, delivery proof, and photos of the item.<br>3. If unresolved, email support@unityxhub.com.ph with complete details.<br><strong>💬 Honesty and documentation keep our marketplace fair.</strong>"
+            },
+            {
+                q: "How do I become a verified seller?",
+                a: "To get verified:<br>• Complete your profile and upload valid ID<br>• Provide proof of business or DTI registration<br>• Maintain good ratings and respond promptly to buyers<br><strong>💬 Verified sellers gain more trust, visibility, and sales.</strong>"
+            },
+            {
+                q: "Can I list services or job offers too?",
+                a: "✅ Yes! UnityXhub is not limited to products.<br>You can:<br>• Offer freelance services<br>• Post job openings<br>• Hire talent for projects<br><strong>💬 From buying to hiring — we unite every opportunity.</strong>"
+            },
+            {
+                q: "What happens if a buyer doesn’t pay or cancels last minute?",
+                a: "We monitor repeat cancellations and fraudulent buyers.<br>Sellers can report unpaid or suspicious orders to support@unityxhub.com.ph.<br><strong>💬 We protect sellers just as much as buyers.</strong>"
+            },
+            {
+                q: "Can I edit or delete my post after publishing?",
+                a: "Yes, go to My Dashboard → Manage Listings.<br>You can edit product details, update stock, or delete old posts anytime.<br><strong>💬 Keep your listings fresh and accurate — it boosts your visibility.</strong>"
+            },
+            {
+                q: "How can I increase my sales on UnityXhub?",
+                a: "• Use clear, high-quality product photos<br>• Add honest and detailed descriptions<br>• Maintain 5-star customer service<br>• Upgrade to “Featured Listing” for more reach<br><strong>💬 Consistency and transparency build long-term customers.</strong>"
+            },
+            {
+                q: "What safety measures does UnityXhub use to protect users?",
+                a: "• 24/7 fraud detection system<br>• AI-based listing review<br>• Account verification process<br>• Buyer & Seller rating system<br><strong>💬 Your account is your responsibility — but we provide the shield to protect it.</strong>"
+            },
+            {
+                q: "Can I use my own courier or shipping service?",
+                a: "Yes — as long as tracking details are provided and delivery is secure.<br>UnityXhub also integrates with trusted logistics partners like J&T Express and LBC.<br><strong>💬 Fast, reliable, and traceable — that’s how we keep customers happy.</strong>"
+            },
+            {
+                q: "How do I track my order?",
+                a: "You can track your shipment using the tracking number provided by the seller or through our integrated courier tracking system.<br><strong>💬 Transparency from checkout to delivery — that’s our promise.</strong>"
+            },
+            {
+                q: "Can I change my delivery address after placing an order?",
+                a: "Once an order is confirmed, changes may not be possible.<br>Contact the seller immediately — if the parcel hasn’t shipped yet, they can update it for you.<br><strong>💬 Act fast — shipping partners move quickly!</strong>"
+            },
+            {
+                q: "How do I deactivate or delete my account?",
+                a: "Go to Account Settings → Privacy → Delete Account or contact support@unityxhub.com.ph.<br>Your data will be permanently deleted following our Privacy Policy.<br><strong>💬 We respect your right to leave, but we’d love to have you back.</strong>"
+            },
+            {
+                q: "Can I manage multiple shops or services under one account?",
+                a: "Yes — verified sellers can open multiple shops or service pages under one dashboard for easier management.<br><strong>💬 One login. Many opportunities.</strong>"
+            },
+            {
+                q: "How long does it take for my earnings to be credited?",
+                a: "Seller payouts are processed every Monday and Thursday, once the transaction is marked “Completed.”<br>Processing time may vary depending on your bank or e-wallet.<br><strong>💬 Quick, reliable, and fully transparent.</strong>"
+            },
+            {
+                q: "What happens if I accidentally pay twice?",
+                a: "No worries. Send proof of both payments to support@unityxhub.com.ph, and our finance team will verify and refund the duplicate transaction.<br><strong>💬 We double-check — so you don’t double-pay.</strong>"
+            },
+            {
+                q: "Are there limits to how many items I can post?",
+                a: "Free users have posting limits (depending on category).<br>Upgrading to a Pro or Business Plan gives you unlimited listings and premium visibility.<br><strong>💬 Grow with your business — scale without limits.</strong>"
+            },
+            {
+                q: "Can I post rentals or used items?",
+                a: "Yes! UnityXhub supports:<br>• Used goods<br>• Rentals (property, equipment, vehicles)<br>• Secondhand gadgets<br><strong>💬 Just be honest about the condition — buyers value transparency.</strong>"
+            },
+            {
+                q: "What if I forget my password?",
+                a: "Click “Forgot Password” on the login page.<br>Follow the email instructions to reset your password securely.<br><strong>💬 Never share your password — your account is your responsibility.</strong>"
+            },
+            {
+                q: "How do I become a featured seller?",
+                a: "Maintain great ratings, consistent sales, and professional communication.<br>Top-performing sellers are reviewed monthly and invited to the Featured Seller Program.<br><strong>💬 Good service = good spotlight.</strong>"
+            },
+            {
+                q: "What should I do if a buyer files a false report against me?",
+                a: "Submit evidence (chat logs, photos, receipts) to support@unityxhub.com.ph within 3 days.<br>Our review team investigates all reports fairly.<br><strong>💬 Truth always wins — that’s our rule.</strong>"
+            },
+            {
+                q: "Does UnityXhub have a mobile app?",
+                a: "Our mobile app is currently under development!<br>For now, you can access UnityXhub seamlessly on mobile browsers.<br><strong>💬 Web or phone — same smooth experience.</strong>"
+            },
+            {
+                q: "Can I advertise my shop or products on UnityXhub?",
+                a: "Yes, we offer promoted posts and banner ads for extra visibility.<br>You can request ad slots via your seller dashboard.<br><strong>💬 Boost your reach. Multiply your sales.</strong>"
+            },
+            {
+                q: "Is UnityXhub available internationally?",
+                a: "Currently, we primarily serve the Philippines, but international expansion is in progress.<br><strong>💬 We start local — we grow global.</strong>"
+            },
+            {
+                q: "How do I contact UnityXhub?",
+                a: "Need help?<br>We’re here for you:<br>📧 support@UnityXhub.com.ph<br>📞 +63 9XX XXX XXXX<br>📍 Manila, Philippines<br>We respond within 24–48 hours.<br><br><strong>💬 Final Note</strong><br>UnityXhub is more than a marketplace — it’s your digital business partner.<br>Whether you’re buying, selling, or offering services, our mission stays the same:<br>To connect people, empower growth, and build trust online.<br><br><strong>💬 Your journey starts here.<br>We’re not just a platform — we’re your partner in growth.</strong>"
+            }
+        ];
+
+        // Render FAQ List
+        const faqList = document.getElementById('faqList');
+        const searchInput = document.getElementById('faqSearch');
+
+        function renderFAQ(items) {
+            faqList.innerHTML = '';
+            items.forEach((item, index) => {
+                const faqItem = document.createElement('div');
+                faqItem.className = 'faq-item';
+
+                faqItem.innerHTML = `
+                    <div class="faq-question" onclick="toggleFAQ(${index})">
+                        <div style="display:flex;align-items:center;">
+                            <span class="faq-number">${index + 1}</span>
+                            ${item.q}
+                        </div>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer" id="answer-${index}">
+                        ${item.a}
+                    </div>
+                `;
+                faqList.appendChild(faqItem);
+            });
+        }
+
+        // Toggle FAQ Answer
+        window.toggleFAQ = function(index) {
+            const answer = document.getElementById(`answer-${index}`);
+            const icon = answer.previousElementSibling.querySelector('i');
+
+            answer.classList.toggle('show');
+            icon.classList.toggle('fa-chevron-down');
+            icon.classList.toggle('fa-chevron-up');
+        };
+
+        // Search Filter
+        searchInput?.addEventListener('input', () => {
+            const term = searchInput.value.toLowerCase();
+            const filtered = faqs.filter(faq => 
+                faq.q.toLowerCase().includes(term) || 
+                faq.a.toLowerCase().includes(term)
+            );
+            renderFAQ(filtered);
+        });
+
+        // Initial Render
+        document.addEventListener('DOMContentLoaded', () => {
+            renderFAQ(faqs);
+        });
+    </script>
+</body>
+</html>

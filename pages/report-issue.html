@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Report an Issue – UnityXhub</title>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Reuse Global CSS -->
+    <link rel="stylesheet" href="../css/style.css">
+    <style>
+        .report-container {
+            max-width: 900px;
+            margin: 50px auto;
+            padding: 30px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+            line-height: 1.8;
+        }
+
+        .section-title {
+            font-size: 1.6rem;
+            color: var(--secondary);
+            margin: 30px 0 20px;
+            font-weight: 700;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--gray);
+        }
+
+        .highlight {
+            color: var(--primary);
+            font-weight: bold;
+        }
+
+        ul, ol {
+            margin: 10px 0 10px 20px;
+        }
+
+        .warning-box {
+            background: #f8d7da;
+            color: #721c24;
+            padding: 20px;
+            border-radius: 12px;
+            margin: 30px 0;
+            border: 1px solid #f5c6cb;
+        }
+
+        .next-steps {
+            background: #e3f2fd;
+            padding: 20px;
+            border-radius: 12px;
+            margin: 30px 0;
+        }
+
+        .steps-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .step-card {
+            background: white;
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            border-left: 4px solid var(--primary);
+        }
+
+        .step-icon {
+            font-size: 1.8rem;
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+
+        .final-message {
+            background: #fff3cd;
+            padding: 20px;
+            border-radius: 12px;
+            text-align: center;
+            font-style: italic;
+            color: #856404;
+            border-left: 4px solid #ffc107;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="header-container">
+            <div class="logo-section">
+                <div class="site-title">UnityXhub</div>
+                <div class="slogan">Your One Stop for Everything Online</div>
+            </div>
+            <button class="btn btn-outline" onclick="history.back()">← Back</button>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="report-container">
+        <h2 class="section-title"><i class="fas fa-exclamation-triangle"></i> Report an Issue</h2>
+        <p><strong>Your safety and trust come first.</strong><br>
+        If something doesn’t feel right, we make it easy for you to report it.</p>
+
+        <!-- How to Report -->
+        <div class="clause">
+            <h3 class="section-title">📝 How to Report</h3>
+
+            <!-- Method 1: Via Report Page / Chat Message -->
+            <div class="step-card">
+                <div class="step-icon"><i class="fas fa-flag"></i></div>
+                <h4>1. Via Report Page / Chat Message</h4>
+                <ul>
+                    <li>Go to the “<strong>Report an Issue</strong>” page on our site or app.</li>
+                    <li>Select the type of issue:
+                        <ul>
+                            <li>Fraud or scam attempt</li>
+                            <li>Product not delivered</li>
+                            <li>Offensive or abusive content</li>
+                            <li>Seller/Buyer misconduct</li>
+                            <li>Other concerns</li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Method 2: Via Email -->
+            <div class="step-card">
+                <div class="step-icon"><i class="fas fa-envelope"></i></div>
+                <h4>2. Via Email</h4>
+                <ul>
+                    <li>Send us a direct email at: <strong>support@unityxhub.com</strong></li>
+                    <li>Please include:
+                        <ul>
+                            <li>Order ID (if applicable)</li>
+                            <li>Details of the issue</li>
+                            <li>Screenshots or evidence (if available)</li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- What Happens Next -->
+        <div class="next-steps">
+            <h3><i class="fas fa-bolt"></i> ⚡ What Happens Next</h3>
+            <ul>
+                <li>Our support team reviews your report within <strong>24–48 hours</strong>.</li>
+                <li>If needed, we may contact you for additional details.</li>
+                <li>Serious violations may lead to:
+                    <ul>
+                        <li>Account suspension</li>
+                        <li>Removal of listings</li>
+                        <li>Legal escalation (if required)</li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+
+        <!-- Final Message -->
+        <div class="final-message">
+            💬 Your reports help keep UnityXhub safe, fair, and enjoyable for everyone.
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>UnityXhub</h3>
+                <p>Built by Filipinos, for a global digital economy.</p>
+            </div>
+            <div class="footer-column">
+                <h3>Support</h3>
+                <ul class="footer-links">
+                    <li><a href="help-center.html"><i class="fas fa-chevron-right"></i> Help Center</a></li>
+                    <li><a href="contact.html"><i class="fas fa-chevron-right"></i> Contact Us</a></li>
+                    <li><a href="buyer-protection.html"><i class="fas fa-chevron-right"></i> Buyer Protection</a></li>
+                    <li><a href="report-issue.html" class="active"><i class="fas fa-chevron-right"></i> Report an Issue</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Legal</h3>
+                <ul class="footer-links">
+                    <li><a href="terms-of-service.html"><i class="fas fa-chevron-right"></i> Terms of Service</a></li>
+                    <li><a href="privacy-policy.html"><i class="fas fa-chevron-right"></i> Privacy Policy</a></li>
+                    <li><a href="seller-agreement.html"><i class="fas fa-chevron-right"></i> Seller Agreement</a></li>
+                    <li><a href="buyer-agreement.html"><i class="fas fa-chevron-right"></i> Buyer Agreement</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="copyright">
+            &copy; 2025 UnityXhub. All rights reserved.
+        </div>
+    </footer>
+
+    <script>
+        // Optional: Add smooth scroll or chat trigger later
+    </script>
+</body>
+</html>

@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>My Wishlist – UnityXhub</title>
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Reuse Global CSS -->
+    <link rel="stylesheet" href="../../css/style.css">
+
+    <style>
+        .wishlist-container {
+            max-width: 1200px;
+            margin: 30px auto;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+
+        .wishlist-header {
+            padding: 20px;
+            background: var(--primary);
+            color: white;
+            font-size: 1.6rem;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .wishlist-items {
+            padding: 20px;
+        }
+
+        .wishlist-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 15px;
+            border-bottom: 1px solid #eee;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .wishlist-item:hover {
+            background: #f8f9fa;
+        }
+
+        .wishlist-item-img {
+            width: 80px;
+            height: 80px;
+            background: #ffebee;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #d32f2f;
+            font-weight: bold;
+            overflow: hidden;
+        }
+
+        .wishlist-item-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .wishlist-item-info h3 {
+            font-size: 1.1rem;
+            margin-bottom: 5px;
+            color: var(--dark);
+        }
+
+        .wishlist-item-price {
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .wishlist-actions {
+            margin-left: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .wishlist-btn {
+            padding: 8px 12px;
+            border: none;
+            border-radius: 6px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .add-to-cart-btn {
+            background: var(--primary);
+            color: white;
+        }
+
+        .add-to-cart-btn:hover {
+            background: #e05d00;
+        }
+
+        .remove-btn {
+            background: #f44336;
+            color: white;
+        }
+
+        .remove-btn:hover {
+            background: #d32f2f;
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: 60px 20px;
+            color: #666;
+            font-size: 1.2rem;
+        }
+
+        .empty-state i {
+            font-size: 3rem;
+            color: #ccc;
+            margin-bottom: 15px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="header-container">
+            <div class="logo-section">
+                <div class="site-title">UnityXhub</div>
+                <div class="slogan">My Wishlist</div>
+            </div>
+            <div class="search-bar">
+                <input type="text" placeholder="Search products...">
+                <div class="search-icon"><i class="fas fa-search"></i></div>
+            </div>
+            <div class="auth-buttons">
+                <a href="cart.html" class="btn btn-outline">
+                    <i class="fas fa-shopping-cart"></i> Cart
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Navigation Tabs -->
+    <div class="nav-tabs">
+        <div class="tabs-container">
+            <a href="../../index.html"><i class="fas fa-home"></i> Home</a>
+            <a href="shopping.html"><i class="fas fa-shopping-cart"></i> Shopping</a>
+			<a href="../../pages/services/business-feed.html"><i class="fas fa-wrench"></i> Services</a>
+            <a href="#" class="active"><i class="fas fa-heart"></i> My Wishlist</a>
+        </div>
+    </div>
+
+    <!-- Wishlist Page -->
+    <main>
+        <div class="wishlist-container">
+            <div class="wishlist-header">
+                <i class="fas fa-heart"></i> My Wishlist
+            </div>
+            <div class="wishlist-items" id="wishlistItems">
+                <!-- Filled by JS -->
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <!-- Column 1: About UnityXhub -->
+            <div class="footer-column">
+                <h3>UnityXhub</h3>
+                <p>Your one-stop digital ecosystem for shopping, jobs, freelancers, and community connections. Built by Filipinos for the global economy.</p>
+                <div class="payment-methods">
+                    <div class="payment-method">Visa</div>
+                    <div class="payment-method">MC</div>
+                    <div class="payment-method">PayPal</div>
+                    <div class="payment-method">GCash</div>
+                    <div class="payment-method">Bank</div>
+                </div>
+            </div>
+
+            <!-- Column 2: Quick Links -->
+            <div class="footer-column">
+                <h3>Quick Links</h3>
+                <ul class="footer-links">
+					<li><a href="../../pages/welcome.html"><i class="fas fa-chevron-right"></i> Welcome User</a></li>
+                    <li><a href="../../index.html"><i class="fas fa-chevron-right"></i> Home</a></li>
+                    <li><a href="shopping.html"><i class="fas fa-chevron-right"></i> Continue Shopping</a></li>
+                    <li><a href="cart.html"><i class="fas fa-chevron-right"></i> View Cart</a></li>
+                </ul>
+            </div>
+
+            <!-- Column 3: Support -->
+            <div class="footer-column">
+                <h3>Support</h3>
+                <ul class="footer-links">
+                    <li><a href="../../pages/help-center.html"><i class="fas fa-chevron-right"></i> FAQ CENTER</a></li>
+                    <li><a href="../../pages/contact.html"><i class="fas fa-chevron-right"></i> Contact Us</a></li>
+                    <li><a href="../../pages/buyer-protection.html"><i class="fas fa-chevron-right"></i> Buyer Protection</a></li>
+                    <li><a href="../../pages/report.html"><i class="fas fa-chevron-right"></i> Report an Issue</a></li>
+                    <li><a href="../../pages/safety-tips.html"><i class="fas fa-chevron-right"></i> Safety Tips</a></li>
+                </ul>
+            </div>
+
+            <!-- Column 4: Legal -->
+            <div class="footer-column">
+                <h3>Legal</h3>
+                <ul class="footer-links">
+                    <li><a href="../../pages/about.html"><i class="fas fa-chevron-right"></i> About Us</a></li>
+                    <li><a href="../../pages/terms-of-service.html"><i class="fas fa-chevron-right"></i> Terms of Service</a></li>
+                    <li><a href="../../pages/privacy-policy.html"><i class="fas fa-chevron-right"></i> Privacy Policy</a></li>
+                    <li><a href="../../pages/cookies-policy.html"><i class="fas fa-chevron-right"></i> Cookie Policy</a></li>
+                    <li><a href="../../pages/disclaimer.html"><i class="fas fa-chevro-right"></i> Platform Disclaimer</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="copyright">
+            &copy; 2025 UnityXhub. All rights reserved.
+        </div>
+    </footer>
+
+    <!-- Cart Notification -->
+    <div class="cart-notification" id="cartNotification">
+        <i class="fas fa-check-circle"></i>
+        <span>Item added to cart!</span>
+    </div>
+
+    <!-- Load Scripts -->
+    <script src="../../js/cart.js"></script>
+    <script src="../../js/main.js"></script>
+    <script>
+        // Simulated product database
+        const allProducts = {
+            'iphone15': {
+                id: 'iphone15',
+                name: "iPhone 15 128GB",
+                price: 699,
+                image: "https://via.placeholder.com/100x100?text=iPhone+15"
+            },
+            'airpods': {
+                id: 'airpods',
+                name: "AirPods Pro 2nd Gen",
+                price: 199,
+                image: "https://via.placeholder.com/100x100?text=AirPods+Pro"
+            },
+            'smartwatch': {
+                id: 'smartwatch',
+                name: "Fitness Tracker Pro",
+                price: 79,
+                image: "https://via.placeholder.com/100x100?text=Smart+Watch"
+            }
+        };
+
+        // Render Wishlist on Load
+        document.addEventListener('DOMContentLoaded', () => {
+            const container = document.getElementById('wishlistItems');
+            let wishlist = JSON.parse(localStorage.getItem('unityxhub_wishlist')) || [];
+
+            if (wishlist.length === 0) {
+                container.innerHTML = `
+                    <div class="empty-state">
+                        <i class="fas fa-heart-broken"></i>
+                        <p>Your wishlist is empty. Start liking products!</p>
+                    </div>
+                `;
+                return;
+            }
+
+            // Fill in missing data from product DB
+            const enrichedWishlist = wishlist.map(item => ({
+                ...allProducts[item.id],
+                quantity: item.quantity || 1
+            })).filter(Boolean);
+
+            localStorage.setItem('unityxhub_wishlist', JSON.stringify(enrichedWishlist));
+
+            container.innerHTML = '';
+            enrichedWishlist.forEach(product => {
+                const itemEl = document.createElement('div');
+                itemEl.className = 'wishlist-item';
+                itemEl.innerHTML = `
+                    <div class="wishlist-item-img">
+                        <img src="${product.image}" alt="${product.name}">
+                    </div>
+                    <div class="wishlist-item-info">
+                        <h3>${product.name}</h3>
+                        <div class="wishlist-item-price">$${product.price}</div>
+                    </div>
+                    <div class="wishlist-actions">
+                        <button class="wishlist-btn add-to-cart-btn"
+                                onclick="event.stopPropagation(); addToCart('${product.id}')">
+                            Add to Cart
+                        </button>
+                        <button class="wishlist-btn remove-btn"
+                                onclick="event.stopPropagation(); removeFromWishlist('${product.id}', this)">
+                            Remove
+                        </button>
+                    </div>
+                `;
+                itemEl.addEventListener('click', () => {
+                    window.location.href = `product-detail.html?id=${product.id}`;
+                });
+                container.appendChild(itemEl);
+            });
+        });
+
+        // Add to Cart
+        function addToCart(productId) {
+            const product = Object.values(allProducts).find(p => p.id === productId);
+            if (!product) return;
+
+            let cart = JSON.parse(localStorage.getItem('unityxhub_cart')) || [];
+            const exists = cart.find(item => item.id === productId);
+
+            if (!exists) {
+                cart.push({
+                    id: product.id,
+                    name: product.name,
+                    price: product.price,
+                    quantity: 1,
+                    timestamp: new Date().toISOString()
+                });
+                localStorage.setItem('unityxhub_cart', JSON.stringify(cart));
+                showNotification(`${product.name} added to cart!`, 'var(--primary)');
+            } else {
+                alert(`${product.name} is already in your cart!`);
+            }
+        }
+
+        // Remove from Wishlist
+        function removeFromWishlist(productId, btn) {
+            let wishlist = JSON.parse(localStorage.getItem('unityxhub_wishlist')) || [];
+            wishlist = wishlist.filter(p => p.id !== productId);
+            localStorage.setItem('unityxhub_wishlist', JSON.stringify(wishlist));
+
+            // Remove from UI
+            btn.closest('.wishlist-item').remove();
+
+            // Show notification
+            showNotification("✅ Item removed from wishlist!", "#e91e63");
+        }
+
+        // Show Notification
+        function showNotification(message, color) {
+            const notification = document.getElementById('cartNotification');
+            notification.querySelector('span').textContent = message;
+            notification.style.background = color;
+            notification.classList.add('show');
+            setTimeout(() => notification.classList.remove('show'), 3000);
+        }
+    </script>
+</body>
+</html>

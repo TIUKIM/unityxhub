@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Seller Inbox – UnityXhub</title>
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Reuse Global CSS -->
+    <link rel="stylesheet" href="../../css/style.css">
+
+    <style>
+        .inbox-container {
+            max-width: 1200px;
+            margin: 30px auto;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            overflow: hidden;
+            display: flex;
+            height: 700px;
+        }
+
+        .chat-list {
+            width: 30%;
+            border-right: 1px solid var(--gray);
+            overflow-y: auto;
+            background: #f8f9fa;
+        }
+
+        .chat-item {
+            padding: 15px;
+            border-bottom: 1px solid var(--gray);
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .chat-item:hover, .chat-item.active {
+            background: var(--light);
+        }
+
+        .chat-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: #eee;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            color: var(--primary);
+            margin-right: 10px;
+        }
+
+        .chat-info {
+            flex: 1;
+        }
+
+        .chat-name {
+            font-weight: 600;
+            color: var(--dark);
+        }
+
+        .chat-preview {
+            font-size: 0.9rem;
+            color: #666;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .chat-time {
+            font-size: 0.8rem;
+            color: #999;
+        }
+
+        .chat-unread {
+            background: var(--primary);
+            color: white;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            font-size: 0.7rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-left: 5px;
+        }
+
+        .chat-header {
+            padding: 15px;
+            background: var(--primary);
+            color: white;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .chat-body {
+            flex: 1;
+            overflow-y: auto;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            background: #f8f9fa;
+        }
+
+        .message {
+            max-width: 70%;
+            padding: 12px 18px;
+            border-radius: 18px;
+            line-height: 1.5;
+            position: relative;
+            font-size: 1rem;
+        }
+
+        .buyer-message {
+            align-self: flex-start;
+            background: #e9ecef;
+            color: var(--dark);
+            border-bottom-left-radius: 5px;
+        }
+
+        .seller-message {
+            align-self: flex-end;
+            background: var(--primary);
+            color: white;
+            border-bottom-right-radius: 5px;
+        }
+
+        .chat-footer {
+            padding: 15px;
+            border-top: 1px solid var(--gray);
+            display: flex;
+            gap: 10px;
+        }
+
+        .chat-input {
+            flex: 1;
+            padding: 12px;
+            border: 1px solid var(--gray);
+            border-radius: 8px;
+            font-size: 1rem;
+            outline: none;
+        }
+
+        .send-btn {
+            padding: 12px 20px;
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .send-btn:hover {
+            background: #e05d00;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="header-container">
+            <div class="logo-section">
+                <div class="site-title">UnityXhub</div>
+                <div class="slogan">Seller Inbox</div>
+            </div>
+            <div class="search-bar">
+                <input type="text" placeholder="Search messages..." id="messageSearch">
+                <div class="search-icon">
+                    <i class="fas fa-search"></i>
+                </div>
+            </div>
+            <div class="auth-buttons">
+                <a href="../../index.html" class="btn btn-outline">
+                    <i class="fas fa-home"></i> Home
+                </a>
+                <a href="cart.html" class="btn btn-outline">
+                    <i class="fas fa-shopping-cart"></i> Cart
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Navigation Tabs -->
+    <div class="nav-tabs">
+        <div class="tabs-container">
+            <a href="../../index.html"><i class="fas fa-home"></i> Home</a>
+            <a href="shopping.html"><i class="fas fa-shopping-cart"></i> Shopping</a>
+            <a href="../../pages/jobs/job.html"><i class="fas fa-briefcase"></i> Jobs</a>
+            <a href="../../pages/freelancer/freelance-newsfeed.html"><i class="fas fa-hammer"></i> Freelance</a>
+            <a href="../../pages/business/business-directory.html"><i class="fas fa-building"></i> Business</a>
+            <a href="../../pages/classifiedads/classifieds.html"><i class="fas fa-ad"></i> Classifieds</a>
+            <a href="../../pages/services/business-feed.html"><i class="fas fa-wrench"></i> Services</a>
+        </div>
+    </div>
+
+    <!-- Seller Inbox -->
+    <main>
+        <div class="inbox-container">
+            <!-- Chat List -->
+            <div class="chat-list" id="chatList">
+                <!-- Chats will be loaded here -->
+            </div>
+
+            <!-- Chat View -->
+            <div class="chat-view" id="chatView">
+                <div class="chat-header">
+                    <i class="fas fa-user"></i> Select a conversation
+                </div>
+                <div class="chat-body" id="chatMessages">
+                    <p style="text-align:center; color:#666;">Select a chat to view messages</p>
+                </div>
+                <div class="chat-footer">
+                    <input type="text" class="chat-input" id="replyInput" placeholder="Type your reply..." disabled>
+                    <button class="send-btn" onclick="sendReply()" disabled>Send</button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <div class="back-link">
+        <a href="../../index.html"><i class="fas fa-arrow-left"></i> Back to Home</a>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <!-- Column 1: About UnityXhub -->
+            <div class="footer-column">
+                <h3>UnityXhub</h3>
+                <p>Your one-stop digital ecosystem for shopping, jobs, freelancers, and community connections. Built by Filipinos for the global economy.</p>
+                <div class="payment-methods">
+                    <div class="payment-method">Visa</div>
+                    <div class="payment-method">MC</div>
+                    <div class="payment-method">PayPal</div>
+                    <div class="payment-method">GCash</div>
+                    <div class="payment-method">Bank</div>
+                </div>
+            </div>
+
+            <!-- Column 2: Quick Links -->
+            <div class="footer-column">
+                <h3>Quick Links</h3>
+                <ul class="footer-links">
+                    <li><a href="../../index.html"><i class="fas fa-chevron-right"></i> Home</a></li>
+                    <li><a href="cart.html"><i class="fas fa-chevron-right"></i> View Cart</a></li>
+                    <li><a href="../../pages/services/business-feed.html"><i class="fas fa-chevron-right"></i> Services</a>
+                    <li><a href="../../pages/business/business-directory.html"><i class="fas fa-chevron-right"></i> Business News Feed</a></li>
+                    <li><a href="../../pages/freelancer/freelance-newsfeed.html"><i class="fas fa-chevron-right"></i> Freelance Services</a></li>
+                    <li><a href="../../pages/classifiedads/classifieds.html"><i class="fas fa-chevron-right"></i> Classified Ads</a></li>
+                </ul>
+            </div>
+
+            <!-- Column 3: Support -->
+            <div class="footer-column">
+                <h3>Support</h3>
+                <ul class="footer-links">
+                    <li><a href="../../pages/help-center.html"><i class="fas fa-chevron-right"></i> FAQ CENTER</a></li>
+                    <li><a href="../../pages/contact.html"><i class="fas fa-chevron-right"></i> Contact Us</a></li>
+                    <li><a href="../../pages/buyer-agreement.html"><i class="fas fa-chevron-right"></i> Buyer Agreement</a></li>
+                    <li><a href="../../pages/report.html"><i class="fas fa-chevron-right"></i> Report an Issue</a></li>
+                    <li><a href="../../pages/safety-tips.html"><i class="fas fa-chevron-right"></i> Safety Tips</a></li>
+                    <li><a href="../../pages/community-guidelines.html"><i class="fas fa-chevron-right"></i> Community Guidelines</a></li>
+                </ul>
+            </div>
+
+            <!-- Column 4: Legal -->
+            <div class="footer-column">
+                <h3>Legal</h3>
+                <ul class="footer-links">
+                    <li><a href="../../pages/about.html"><i class="fas fa-chevron-right"></i> About Us</a></li>
+                    <li><a href="../../pages/terms-of-service.html"><i class="fas fa-chevron-right"></i> Terms of Service</a></li>
+                    <li><a href="../../pages/privacy-policy.html"><i class="fas fa-chevron-right"></i> Privacy Policy</a></li>
+                    <li><a href="../../pages/cookies-policy.html"><i class="fas fa-chevron-right"></i> Cookie Policy</a></li>
+                    <li><a href="../../pages/disclaimer.html"><i class="fas fa-chevron-right"></i> Platform Disclaimer</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="copyright">
+            &copy; 2025 UnityXhub. All rights reserved. UnityXhub was built by Filipinos, for a global digital economy.
+        </div>
+    </footer>
+
+    <!-- Load Scripts -->
+    <script src="../../js/main.js"></script>
+    <script>
+        const chatList = document.getElementById('chatList');
+        const chatMessages = document.getElementById('chatMessages');
+        const chatHeader = document.querySelector('.chat-header');
+        const replyInput = document.getElementById('replyInput');
+        const sendBtn = document.querySelector('.send-btn');
+
+        let selectedChatId = null;
+
+        // Load all chats from localStorage
+        function loadChats() {
+            const allKeys = Object.keys(localStorage);
+            const chats = [];
+
+            allKeys.forEach(key => {
+                if (key.startsWith('unityxhub_chat_')) {
+                    const chatId = key.replace('unityxhub_chat_', '');
+                    const messages = JSON.parse(localStorage.getItem(key) || '[]');
+                    if (messages.length > 0) {
+                        const lastMsg = messages[messages.length - 1];
+                        const buyerName = lastMsg.sender === 'buyer' ? 'Customer' : 'You';
+                        const unread = messages.filter(m => m.sender === 'buyer' && !m.read).length;
+
+                        chats.push({
+                            id: chatId,
+                            buyerName: buyerName,
+                            lastMsg: lastMsg.text,
+                            time: new Date(lastMsg.timestamp).toLocaleTimeString(),
+                            unread: unread
+                        });
+                    }
+                }
+            });
+
+            // Sort by latest message
+            chats.sort((a, b) => new Date(b.time) - new Date(a.time));
+
+            // Render chat list
+            chatList.innerHTML = '';
+            chats.forEach(chat => {
+                const chatEl = document.createElement('div');
+                chatEl.className = 'chat-item';
+                chatEl.innerHTML = `
+                    <div style="display:flex; align-items:center; gap:10px;">
+                        <div class="chat-avatar">${chat.buyerName.charAt(0)}</div>
+                        <div class="chat-info">
+                            <div class="chat-name">${chat.buyerName}</div>
+                            <div class="chat-preview">${chat.lastMsg}</div>
+                        </div>
+                        <div>
+                            <div class="chat-time">${chat.time}</div>
+                            ${chat.unread > 0 ? `<div class="chat-unread">${chat.unread}</div>` : ''}
+                        </div>
+                    </div>
+                `;
+                chatEl.addEventListener('click', () => openChat(chat.id, chat.buyerName));
+                chatList.appendChild(chatEl);
+            });
+        }
+
+        // Open chat
+        function openChat(chatId, buyerName) {
+            selectedChatId = chatId;
+            chatHeader.innerHTML = `<i class="fas fa-user"></i> ${buyerName}`;
+            replyInput.disabled = false;
+            sendBtn.disabled = false;
+
+            const messages = JSON.parse(localStorage.getItem(`unityxhub_chat_${chatId}`) || '[]');
+
+            // Mark all as read
+            const updated = messages.map(m => ({ ...m, read: true }));
+            localStorage.setItem(`unityxhub_chat_${chatId}`, JSON.stringify(updated));
+
+            // Render messages
+            chatMessages.innerHTML = '';
+            updated.forEach(msg => {
+                const msgEl = document.createElement('div');
+                msgEl.className = msg.sender === 'buyer' ? 'message buyer-message' : 'message seller-message';
+                msgEl.textContent = msg.text;
+                chatMessages.appendChild(msgEl);
+            });
+
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+
+            // Reload list to update unread count
+            loadChats();
+        }
+
+        // Send reply
+        function sendReply() {
+            const text = replyInput.value.trim();
+            if (!text || !selectedChatId) return;
+
+            const message = {
+                sender: 'seller',
+                text: text,
+                timestamp: new Date().toISOString(),
+                read: true
+            };
+
+            let messages = JSON.parse(localStorage.getItem(`unityxhub_chat_${selectedChatId}`) || '[]');
+            messages.push(message);
+            localStorage.setItem(`unityxhub_chat_${selectedChatId}`, JSON.stringify(messages));
+
+            // Add to chat
+            const msgEl = document.createElement('div');
+            msgEl.className = 'message seller-message';
+            msgEl.textContent = text;
+            chatMessages.appendChild(msgEl);
+
+            replyInput.value = '';
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+
+        // Initial load
+        document.addEventListener('DOMContentLoaded', loadChats);
+    </script>
+</body>
+</html>

@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Tech Pro Store – UnityXhub</title>
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Reuse Global CSS -->
+    <link rel="stylesheet" href="../../css/style.css">
+
+    <style>
+        /* Store Container */
+        .store-container {
+            max-width: 1200px;
+            margin: 30px auto;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+
+        /* Store Header */
+        .store-header {
+            position: relative;
+            height: 200px;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            display: flex;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .store-logo {
+            width: 120px;
+            height: 120px;
+            background: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            font-weight: bold;
+            color: var(--primary);
+            border: 5px solid white;
+            margin-right: 20px;
+            z-index: 2;
+        }
+
+        .store-info {
+            color: white;
+            z-index: 2;
+        }
+
+        .store-info h2 {
+            font-size: 2rem;
+            margin-bottom: 8px;
+        }
+
+        .store-stats {
+            display: flex;
+            gap: 20px;
+            margin-top: 10px;
+            font-size: 0.95rem;
+        }
+
+        .store-stats span {
+            background: rgba(255,255,255,0.2);
+            padding: 5px 10px;
+            border-radius: 6px;
+        }
+
+        .store-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.3);
+            z-index: 1;
+        }
+
+        /* Store Actions */
+        .store-actions {
+            padding: 20px;
+            background: #f8f9fa;
+            border-bottom: 1px solid var(--gray);
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .store-btn {
+            padding: 12px 20px;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            border: none;
+            transition: var(--transition);
+        }
+
+        .follow-btn {
+            background: var(--secondary);
+            color: white;
+        }
+
+        .chat-btn {
+            background: var(--primary);
+            color: white;
+        }
+
+        .share-btn {
+            background: #f0f0f0;
+            color: var(--dark);
+            border: 1px solid var(--gray);
+        }
+
+        /* Products Grid */
+        .store-products {
+            padding: 30px;
+        }
+
+        .section-title {
+            font-size: 1.6rem;
+            color: var(--dark);
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+        }
+
+        .product-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .product-img {
+            height: 180px;
+            background: #f5f5f5;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #999;
+            font-size: 1.5rem;
+            font-weight: bold;
+            border-bottom: 1px solid var(--gray);
+        }
+
+        .product-info {
+            padding: 15px;
+            color: var(--dark);
+        }
+
+        .product-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 8px;
+            line-height: 1.4;
+        }
+
+        .product-price {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+
+        .add-to-cart-btn {
+            width: 100%;
+            padding: 10px;
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .add-to-cart-btn:hover {
+            background: #e05d00;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="header-container">
+            <div class="logo-section">
+                <div class="site-title">UnityXhub</div>
+                <div class="slogan">Seller Store</div>
+            </div>
+            <div class="search-bar">
+                <input type="text" placeholder="Search products..." id="productSearch">
+                <div class="search-icon">
+                    <i class="fas fa-search"></i>
+                </div>
+            </div>
+            <div class="auth-buttons">
+                <a href="../../index.html" class="btn btn-outline">
+                    <i class="fas fa-home"></i> Home
+                </a>
+                <a href="cart.html" class="btn btn-outline">
+                    <i class="fas fa-shopping-cart"></i> Cart
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Navigation Tabs -->
+    <div class="nav-tabs">
+        <div class="tabs-container">
+            <a href="../../index.html"><i class="fas fa-home"></i> Home</a>
+            <a href="shopping.html"><i class="fas fa-shopping-cart"></i> Shopping</a>
+            <a href="../../pages/jobs/job.html"><i class="fas fa-briefcase"></i> Jobs</a>
+            <a href="../../pages/freelancer/freelance-newsfeed.html"><i class="fas fa-hammer"></i> Freelance</a>
+            <a href="../../pages/business/business-directory.html"><i class="fas fa-building"></i> Business</a>
+            <a href="../../pages/classifiedads/classifieds.html"><i class="fas fa-ad"></i> Classifieds</a>
+            <a href="../../pages/services/business-feed.html"><i class="fas fa-wrench"></i> Services</a>
+        </div>
+    </div>
+
+    <!-- Store Page -->
+    <main>
+        <div class="store-container">
+            <!-- Store Header -->
+            <div class="store-header">
+                <div class="store-logo">T</div>
+                <div class="store-info">
+                    <h2>Tech Pro Store</h2>
+                    <p>Official seller of Apple, Samsung, and more</p>
+                    <div class="store-stats">
+                        <span>⭐ 4.9 Rating</span>
+                        <span>2.1K Sales</span>
+                        <span>Since 2023</span>
+                    </div>
+                </div>
+                <div class="store-overlay"></div>
+            </div>
+
+            <!-- Store Actions -->
+            <div class="store-actions">
+                <button class="store-btn follow-btn" id="followBtn">
+                    <i class="fas fa-heart"></i> Follow Store
+                </button>
+                <button class="store-btn chat-btn">
+                    <i class="fas fa-comments"></i> Chat Seller
+                </button>
+                <button class="store-btn share-btn">
+                    <i class="fas fa-share-alt"></i> Share Store
+                </button>
+            </div>
+
+            <!-- Store Products -->
+            <div class="store-products">
+                <h2 class="section-title"><i class="fas fa-box"></i> All Products</h2>
+                <div class="product-grid" id="productList">
+                    <!-- Products will be loaded here -->
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <div class="back-link">
+        <a href="../../index.html"><i class="fas fa-arrow-left"></i> Back to Home</a>
+    </div>
+
+    <!-- Mobile Navigation -->
+    <div class="mobile-nav" id="mobileNav">
+        <div class="mobile-nav-header">
+            <div class="site-title">UnityXhub</div>
+            <button class="close-mobile-nav" id="closeMobileNav">&times;</button>
+        </div>
+        <ul class="mobile-nav-links">
+            <li><a href="../../index.html"><i class="fas fa-home"></i> Home</a></li>
+            <li><a href="shopping.html"><i class="fas fa-shopping-cart"></i> Shopping</a></li>
+            <li><a href="../../pages/jobs/jobs.html"><i class="fas fa-briefcase"></i> Jobs</a></li>
+            <li><a href="../../pages/freelancer/freelance-newsfeed.html"><i class="fas fa-hammer"></i> Freelance</a></li>
+            <li><a href="../../pages/business/business-directory.html"><i class="fas fa-building"></i> Business</a></li>
+            <li><a href="../../pages/classifiedads/classifieds.html"><i class="fas fa-ad"></i> Classifieds</a></li>
+            <li><a href="cart.html" id="mobileCart"><i class="fas fa-shopping-cart"></i> Cart</a></li>
+        </ul>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <!-- Column 1: About UnityXhub -->
+            <div class="footer-column">
+                <h3>UnityXhub</h3>
+                <p>Your one-stop digital ecosystem for shopping, jobs, business services, and community connections. Built by Filipinos for the global economy.</p>
+                <div class="payment-methods">
+                    <div class="payment-method">Visa</div>
+                    <div class="payment-method">MC</div>
+                    <div class="payment-method">PayPal</div>
+                    <div class="payment-method">GCash</div>
+                    <div class="payment-method">Bank</div>
+                </div>
+            </div>
+
+            <!-- Column 2: Quick Links -->
+            <div class="footer-column">
+                <h3>Quick Links</h3>
+                <ul class="footer-links">
+                    <li><a href="../../index.html"><i class="fas fa-chevron-right"></i> Home</a></li>
+                    <li><a href="cart.html"><i class="fas fa-chevron-right"></i> View Cart</a></li>
+                    <li><a href="../../pages/services/business-feed.html"><i class="fas fa-chevron-right"></i> Services</a>
+                    <li><a href="../../pages/return-policy.html"><i class="fas fa-chevron-right"></i> Return & Refund Policy</a></li>
+                    <li><a href="shopping.html"><i class="fas fa-chevron-right"></i> Return Marketplace</a></li>
+                    <li><a href="../../pages/business/business-directory.html"><i class="fas fa-chevron-right"></i> Business Directory</a></li>
+                    <li><a href="../../pages/freelancer/freelance-newsfeed.html"><i class="fas fa-chevron-right"></i> Freelance Services</a></li>
+                </ul>
+            </div>
+
+            <!-- Column 3: Support -->
+            <div class="footer-column">
+                <h3>Support</h3>
+                <ul class="footer-links">
+                    <li><a href="../../pages/help-center.html"><i class="fas fa-chevron-right"></i> FAQ CENTER</a></li>
+                    <li><a href="../../pages/contact.html"><i class="fas fa-chevron-right"></i> Contact Us</a></li>
+                    <li><a href="../../pages/buyer-agreement.html"><i class="fas fa-chevron-right"></i> Buyer Agreement</a></li>
+                    <li><a href="../../pages/report.html"><i class="fas fa-chevron-right"></i> Report an Issue</a></li>
+                    <li><a href="../../pages/safety-tips.html"><i class="fas fa-chevron-right"></i> Safety Tips</a></li>
+                    <li><a href="../../pages/community-guidelines.html"><i class="fas fa-chevron-right"></i> Community Guidelines</a></li>
+                </ul>
+            </div>
+
+            <!-- Column 4: Legal -->
+            <div class="footer-column">
+                <h3>Legal</h3>
+                <ul class="footer-links">
+                    <li><a href="../../pages/about.html"><i class="fas fa-chevron-right"></i> About Us</a></li>
+                    <li><a href="../../pages/terms-of-service.html"><i class="fas fa-chevron-right"></i> Terms of Service</a></li>
+                    <li><a href="../../pages/privacy-policy.html"><i class="fas fa-chevron-right"></i> Privacy Policy</a></li>
+                    <li><a href="../../pages/cookies-policy.html"><i class="fas fa-chevron-right"></i> Cookie Policy</a></li>
+                    <li><a href="../../pages/disclaimer.html"><i class="fas fa-chevron-right"></i> Platform Disclaimer</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="copyright">
+            &copy; 2025 UnityXhub. All rights reserved. UnityXhub was built by Filipinos, for a global digital economy.
+        </div>
+    </footer>
+
+    <!-- Cart Notification -->
+    <div class="cart-notification" id="cartNotification">
+        <i class="fas fa-check-circle"></i>
+        <span>Item added to cart!</span>
+    </div>
+
+    <!-- Load Scripts -->
+    <script src="../../js/main.js"></script>
+    <script>
+        // Simulated products for this seller
+        const storeProducts = [
+            {
+                id: 1,
+                name: "iPhone 15 128GB",
+                price: "699",
+                image: "https://via.placeholder.com/300x300?text=iPhone+15"
+            },
+            {
+                id: 2,
+                name: "AirPods Pro 2nd Gen",
+                price: "199",
+                image: "https://via.placeholder.com/300x300?text=AirPods+Pro"
+            },
+            {
+                id: 4,
+                name: "UltraBook 14\" Intel i5",
+                price: "549",
+                image: "https://via.placeholder.com/300x300?text=Laptop"
+            },
+            {
+                id: 5,
+                name: "DSLR Camera Kit",
+                price: "899",
+                image: "https://via.placeholder.com/300x300?text=DSLR+Camera"
+            },
+            {
+                id: 7,
+                name: "Wireless Earbuds",
+                price: "49",
+                image: "https://via.placeholder.com/300x300?text=Earbuds"
+            },
+            {
+                id: 8,
+                name: "Portable Charger 20000mAh",
+                price: "39",
+                image: "https://via.placeholder.com/300x300?text=Power+Bank"
+            }
+        ];
+
+        // Load cart from localStorage
+        let cart = JSON.parse(localStorage.getItem('unityxhub_cart') || '[]');
+
+        // Load products
+        document.addEventListener('DOMContentLoaded', () => {
+            const productList = document.getElementById('productList');
+
+            storeProducts.forEach(product => {
+                const productEl = document.createElement('div');
+                productEl.className = 'product-card';
+                productEl.innerHTML = `
+                    <div class="product-img">
+                        <img src="${product.image}" alt="${product.name}" style="width:100%;height:100%;object-fit:cover;">
+                    </div>
+                    <div class="product-info">
+                        <div class="product-title">${product.name}</div>
+                        <div class="product-price">$${product.price}</div>
+                        <button class="add-to-cart-btn" onclick="addToCart(${product.id})">
+                            <i class="fas fa-cart-plus"></i> Add to Cart
+                        </button>
+                    </div>
+                `;
+                productList.appendChild(productEl);
+            });
+
+            // Search functionality
+            const searchInput = document.getElementById('productSearch');
+            if (searchInput) {
+                searchInput.addEventListener('input', () => {
+                    const term = searchInput.value.toLowerCase();
+                    document.querySelectorAll('.product-card').forEach(el => {
+                        const text = el.textContent.toLowerCase();
+                        el.style.display = text.includes(term) ? 'block' : 'none';
+                    });
+                });
+            }
+
+            // Follow button
+            const followBtn = document.getElementById('followBtn');
+            let isFollowing = false;
+
+            followBtn.addEventListener('click', () => {
+                if (!isFollowing) {
+                    isFollowing = true;
+                    followBtn.innerHTML = '<i class="fas fa-check"></i> Following';
+                    followBtn.style.background = '#4caf50';
+                    showNotification('Following Tech Pro Store!', '#4caf50');
+                } else {
+                    isFollowing = false;
+                    followBtn.innerHTML = '<i class="fas fa-heart"></i> Follow Store';
+                    followBtn.style.background = '#d32f2f';
+                    showNotification('Unfollowed Tech Pro Store.', '#ff9800');
+                }
+            });
+        });
+
+        // Add to Cart
+        function addToCart(productId) {
+            const product = storeProducts.find(p => p.id === productId);
+            if (!product) return;
+
+            const exists = cart.find(item => item.id === productId);
+            if (!exists) {
+                cart.push({
+                    id: product.id,
+                    name: product.name,
+                    price: product.price,
+                    timestamp: new Date().toISOString()
+                });
+                localStorage.setItem('unityxhub_cart', JSON.stringify(cart));
+                showNotification(`${product.name} added to cart!`, 'var(--primary)');
+            } else {
+                alert(`${product.name} is already in your cart!`);
+            }
+        }
+
+        // Show Notification
+        function showNotification(message, color) {
+            const notification = document.getElementById('cartNotification');
+            notification.querySelector('span').textContent = message;
+            notification.style.background = color;
+            notification.classList.add('show');
+            setTimeout(() => {
+                notification.classList.remove('show');
+            }, 3000);
+        }
+    </script>
+</body>
+</html>

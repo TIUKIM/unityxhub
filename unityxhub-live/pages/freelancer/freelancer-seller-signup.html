@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Be a Seller – UnityXhub</title>
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Reuse Global CSS -->
+    <link rel="stylesheet" href="../../css/style.css">
+
+    <style>
+        .signup-container {
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 30px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        .signup-title {
+            text-align: center;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--dark);
+        }
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid var(--gray);
+            border-radius: 8px;
+            font-size: 1rem;
+        }
+        .submit-btn {
+            width: 100%;
+            padding: 14px;
+            background: var(--secondary);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            cursor: pointer;
+        }
+        .submit-btn:hover {
+            background: #b71c1c;
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="header-container">
+            <div class="logo-section">
+                <div class="site-title">UnityXhub</div>
+                <div class="slogan">Be a Seller</div>
+            </div>
+            <div class="auth-buttons">
+                <button class="btn btn-outline" id="signInBtn"><i class="fas fa-user"></i> Sign In</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Navigation Tabs -->
+    <div class="nav-tabs">
+        <div class="tabs-container">
+            <a href="../../index.html"><i class="fas fa-home"></i> Home</a>
+            <a href="../freelancer.html"><i class="fas fa-hammer"></i> Freelance</a>
+            <a href="#" class="active"><i class="fas fa-store"></i> Be a Seller</a>
+            <a href="jobs/job.html"><i class="fas fa-briefcase"></i> Jobs</a>
+            <a href="../business-directory.html"><i class="fas fa-building"></i> Business</a>
+            <a href="../classifieds.html"><i class="fas fa-ad"></i> Classifieds</a>
+        </div>
+    </div>
+
+    <!-- Signup Form -->
+    <div class="signup-container">
+        <h2 class="signup-title"><i class="fas fa-store"></i> Start Selling in 60 Seconds</h2>
+        <p style="text-align:center; color:#666;">No approval needed. Go live instantly.</p>
+
+        <form id="sellerSignupForm">
+            <div class="form-group">
+                <label>Full Name *</label>
+                <input type="text" name="name" placeholder="e.g., Maria Santos" required>
+            </div>
+            <div class="form-group">
+                <label>Email Address *</label>
+                <input type="email" name="email" placeholder="maria@example.com" required>
+            </div>
+            <div class="form-group">
+                <label>Phone Number *</label>
+                <input type="tel" name="phone" placeholder="09123456789" required>
+            </div>
+            <div class="form-group">
+                <label>Service Category *</label>
+                <select name="category" required>
+                    <option value="" disabled selected>Select Category</option>
+                    <option>Graphics & Design</option>
+                    <option>Programming & Tech</option>
+                    <option>Digital Marketing</option>
+                    <option>Writing & Translation</option>
+                    <option>Video & Animation</option>
+                    <option>Music & Audio</option>
+                    <option>Business & Finance</option>
+                    <option>Data Entry</option>
+                </select>
+            </div>
+            <button type="submit" class="submit-btn">🚀 Launch My Store Now</button>
+        </form>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <!-- Column 1: About UnityXhub -->
+            <div class="footer-column">
+                <h3>UnityXhub</h3>
+                <p>Your one-stop digital ecosystem for shopping, jobs, business services, and community connections. Built by Filipinos for the global economy.</p>
+                <div class="payment-methods">
+                    <div class="payment-method">Visa</div>
+                    <div class="payment-method">MC</div>
+                    <div class="payment-method">PayPal</div>
+                    <div class="payment-method">GCash</div>
+                    <div class="payment-method">Bank</div>
+                </div>
+            </div>
+
+            <!-- Column 2: Quick Links -->
+            <div class="footer-column">
+                <h3>Quick Links</h3>
+                <ul class="footer-links">
+                    <li><a href="../../index.html"><i class="fas fa-chevron-right"></i> Home</a></li>
+                    <li><a href="../shopping.html"><i class="fas fa-chevron-right"></i> Shopping Marketplace</a></li>
+                    <li><a href="jobs/job.html"><i class="fas fa-chevron-right"></i> Job Finder</a></li>
+                    <li><a href="../freelancer.html"><i class="fas fa-chevron-right"></i> Freelance Services</a></li>
+                    <li><a href="../business-directory.html"><i class="fas fa-chevron-right"></i> Business Directory</a></li>
+                    <li><a href="../classifieds.html"><i class="fas fa-chevron-right"></i> Classified Ads</a></li>
+                    <li><a href="../cart.html"><i class="fas fa-chevron-right"></i> View Cart</a></li>
+                    <li><a href="#"><i class="fas fa-chevron-right"></i> Track Order</a></li>
+                    <li><a href="#"><i class="fas fa-chevron-right"></i> Return Policy</a></li>
+                </ul>
+            </div>
+
+            <!-- Column 3: Support -->
+            <div class="footer-column">
+                <h3>Support</h3>
+                <ul class="footer-links">
+                    <li><a href="../help-center.html"><i class="fas fa-chevron-right"></i> Help Center</a></li>
+                    <li><a href="../contact.html"><i class="fas fa-chevron-right"></i> Contact Us</a></li>
+                    <li><a href="../buyer-protection.html"><i class="fas fa-chevron-right"></i> Buyer Protection</a></li>
+                    <li><a href="../report-issue.html"><i class="fas fa-chevron-right"></i> How to Report an Issue</a></li>
+                    <li><a href="../safety-tips.html"><i class="fas fa-chevron-right"></i> Safety Tips</a></li>
+                    <li><a href="../community-guidelines.html"><i class="fas fa-chevron-right"></i> Community Guidelines</a></li>
+                    <li><a href="../seller-guidelines.html"><i class="fas fa-chevron-right"></i> Seller Guidelines</a></li>
+                    <li><a href="../report.html"><i class="fas fa-chevron-right"></i> Report an Issue</a></li>
+                </ul>
+            </div>
+
+            <!-- Column 4: Legal -->
+            <div class="footer-column">
+                <h3>Legal</h3>
+                <ul class="footer-links">
+                    <li><a href="../about.html"><i class="fas fa-chevron-right"></i> About Us</a></li>
+                    <li><a href="../terms-of-service.html"><i class="fas fa-chevron-right"></i> Terms of Service</a></li>
+                    <li><a href="../privacy-policy.html"><i class="fas fa-chevron-right"></i> Privacy Policy</a></li>
+                    <li><a href="../cookies-policy.html"><i class="fas fa-chevron-right"></i> Cookie Policy</a></li>
+                    <li><a href="../seller-agreement.html"><i class="fas fa-chevron-right"></i> Seller Agreement</a></li>
+                    <li><a href="../buyer-agreement.html"><i class="fas fa-chevron-right"></i> Buyer Agreement</a></li>
+                    <li><a href="../business-agreement.html"><i class="fas fa-chevron-right"></i> Business Agreement</a></li>
+                    <li><a href="../disclaimer.html"><i class="fas fa-chevron-right"></i> Platform Disclaimer</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="copyright">&copy; 2025 UnityXhub. All rights reserved.</div>
+    </footer>
+
+    <!-- Load Scripts -->
+    <script src="../../js/main.js"></script>
+    <script>
+        document.getElementById('sellerSignupForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const formData = new FormData(e.target);
+            const seller = {
+                id: 'SELLER_' + Date.now(),
+                name: formData.get('name'),
+                email: formData.get('email'),
+                phone: formData.get('phone'),
+                category: formData.get('category'),
+                balance: 0,
+                earnings: 0,
+                ordersCompleted: 0,
+                joined: new Date().toISOString()
+            };
+
+            // Save to localStorage
+            localStorage.setItem('currentSeller', JSON.stringify(seller));
+            localStorage.setItem(`seller_${seller.id}`, JSON.stringify(seller));
+
+            // Success!
+            alert("✅ Welcome! Your store is live!");
+            window.location.href = 'seller-dashboard.html';
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Create Business Services Account – UnityXhub</title>
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Reuse Global CSS -->
+    <link rel="stylesheet" href="../../css/style.css">
+
+    <style>
+        /* Form Container */
+        .signup-container {
+            max-width: 500px;
+            margin: 50px auto;
+            padding: 30px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+        }
+
+        .signup-container h2 {
+            font-size: 1.8rem;
+            color: var(--secondary);
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .signup-container p {
+            color: #666;
+            margin-bottom: 25px;
+            font-size: 0.95rem;
+            text-align: center;
+        }
+
+        /* Form Styles */
+        .form-group {
+            margin-bottom: 18px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 6px;
+            font-weight: 600;
+            color: var(--dark);
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid var(--gray);
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+
+        .form-control:focus {
+            border-color: var(--primary);
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(255, 107, 0, 0.1);
+        }
+
+        /* Terms Section */
+        .terms-section {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            margin: 20px 0;
+        }
+
+        .terms-section input[type="checkbox"] {
+            margin-top: 3px;
+        }
+
+        .terms-text {
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        .terms-text a {
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        .terms-text a:hover {
+            text-decoration: underline;
+        }
+
+        /* Submit Button */
+        .submit-btn {
+            width: 100%;
+            padding: 14px;
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: var(--transition);
+            margin-top: 10px;
+        }
+
+        .submit-btn:hover {
+            background: #e05d00;
+            transform: translateY(-2px);
+        }
+
+        /* Back Link */
+        .back-link {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .back-link a {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="header-container">
+            <div class="logo-section">
+                <div class="site-title">UnityXhub</div>
+                <div class="slogan">Business Services Sign Up</div>
+            </div>
+            <div class="auth-buttons">
+                <a href="../../index.html" class="btn btn-outline">
+                    <i class="fas fa-home"></i> Home
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Navigation Tabs -->
+    <div class="nav-tabs">
+        <div class="tabs-container">
+            <a href="../../index.html"><i class="fas fa-home"></i> Home</a>
+            <a href="../jobs/jobs.html"><i class="fas fa-briefcase"></i> Jobs</a>
+            <a href="../freelancer/freelance-newsfeed.html"><i class="fas fa-hammer"></i> Freelance</a>
+            <a href="../business/business-directory.html"><i class="fas fa-building"></i> Business</a>
+            <a href="../classifiedads/classifieds.html"><i class="fas fa-ad"></i> Classifieds</a>
+            <a href="#" class="active"><i class="fas fa-concierge-bell"></i> Services Sign Up</a>
+        </div>
+    </div>
+
+    <!-- Business Services Sign Up Form -->
+    <div class="signup-container">
+        <h2><i class="fas fa-concierge-bell"></i> Create Business Services Account</h2>
+        <p>Offer your professional services to thousands of customers on UnityXhub. Create your profile and start getting clients today.</p>
+
+        <form id="serviceForm">
+            <!-- Username -->
+            <div class="form-group">
+                <label for="username">Username *</label>
+                <input type="text" class="form-control" id="username" placeholder="Choose a username" required>
+            </div>
+
+            <!-- Business Name -->
+            <div class="form-group">
+                <label for="businessName">Business Name *</label>
+                <input type="text" class="form-control" id="businessName" placeholder="Your business or service name" required>
+            </div>
+
+            <!-- Password -->
+            <div class="form-group">
+                <label for="password">Password *</label>
+                <input type="password" class="form-control" id="password" placeholder="Create a password" required>
+            </div>
+
+            <!-- Confirm Password -->
+            <div class="form-group">
+                <label for="confirmPassword">Re-enter Password *</label>
+                <input type="password" class="form-control" id="confirmPassword" placeholder="Confirm your password" required>
+            </div>
+
+            <!-- Terms -->
+            <div class="terms-section">
+                <input type="checkbox" id="agreeTerms" required>
+                <div class="terms-text">
+                    I have read and agree to the 
+                    <a href="../../terms-of-service.html" target="_blank">Business Agreement</a> and 
+                    <a href="../../terms-of-service.html#service-provider" target="_blank">Service Provider Terms</a>.
+                </div>
+            </div>
+
+            <!-- Platform Disclaimer -->
+            <div class="terms-text" style="font-size:0.85rem; margin:15px 0; color:#666;">
+                By signing up, you agree to our 
+                <a href="../../disclaimer.html" style="color:var(--primary);">Platform Disclaimer</a>.
+            </div>
+
+            <!-- Submit Button -->
+            <button type="submit" class="submit-btn">
+                <i class="fas fa-check-circle"></i> Create Account
+            </button>
+        </form>
+    </div>
+
+    <!-- Back Link -->
+    <div class="back-link">
+        <a href="../../index.html"><i class="fas fa-arrow-left"></i> Back to Home</a>
+    </div>
+
+    <!-- Mobile Navigation -->
+    <div class="mobile-nav" id="mobileNav">
+        <div class="mobile-nav-header">
+            <div class="site-title">UnityXhub</div>
+            <button class="close-mobile-nav" id="closeMobileNav">&times;</button>
+        </div>
+        <ul class="mobile-nav-links">
+            <li><a href="../../index.html"><i class="fas fa-home"></i> Home</a></li>
+            <li><a href="../../pages/jobs/job.html"><i class="fas fa-briefcase"></i> Jobs</a></li>
+            <li><a href="../../pages/freelancer/freelance-newsfeed.html"><i class="fas fa-hammer"></i> Freelance</a></li>
+            <li><a href="../../pages/business/business-directory.html"><i class="fas fa-building"></i> Business</a></li>
+            <li><a href="../../pages/classifiedads/classifieds.html"><i class="fas fa-ad"></i> Classifieds</a></li>
+            <li><a href="#" class="active"><i class="fas fa-concierge-bell"></i> Services Sign Up</a></li>
+        </ul>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <!-- Column 1: About UnityXhub -->
+            <div class="footer-column">
+                <h3>UnityXhub</h3>
+                <p>Your one-stop digital ecosystem for business services, jobs, and community connections. Built by Filipinos for the global economy.</p>
+                <div class="payment-methods">
+                    <div class="payment-method">Visa</div>
+                    <div class="payment-method">MC</div>
+                    <div class="payment-method">PayPal</div>
+                    <div class="payment-method">GCash</div>
+                    <div class="payment-method">Bank</div>
+                </div>
+            </div>
+
+            <!-- Column 2: Quick Links -->
+            <div class="footer-column">
+                <h3>Quick Links</h3>
+                <ul class="footer-links">
+                    <li><a href="../../index.html"><i class="fas fa-chevron-right"></i> Home</a></li>
+                    <li><a href="business-services.html"><i class="fas fa-chevron-right"></i> Business Services Dashboard</a></li>
+                    <li><a href="../../pages/jobs/job-offer.html"><i class="fas fa-chevron-right"></i> Post a Job</a></li>
+                    <li><a href="../../pages/classifiedads/classifieds.html"><i class="fas fa-chevron-right"></i> Classified Ads</a></li>
+                    <li><a href="../../pages/seller/shopping.html"><i class="fas fa-chevron-right"></i> Shopping Marketplace</a></li>
+                    <li><a href="../../pages/seller/cart.html"><i class="fas fa-chevron-right"></i> View Cart</a></li>
+                </ul>
+            </div>
+
+            <!-- Column 3: Support -->
+            <div class="footer-column">
+                <h3>Support</h3>
+                <ul class="footer-links">
+                    <li><a href="../../pages/help-center.html"><i class="fas fa-chevron-right"></i> FAQ Center</a></li>
+                    <li><a href="../contact.html"><i class="fas fa-chevron-right"></i> Contact Us</a></li>
+                    <li><a href="#"><i class="fas fa-chevron-right"></i> Service Provider Guidelines</a></li>
+                    <li><a href="../buyer-protection.html"><i class="fas fa-chevron-right"></i> Buyer Protection</a></li>
+                    <li><a href="../report-issue.html"><i class="fas fa-chevron-right"></i> Report an Issue</a></li>
+                    <li><a href="../safety-tips.html"><i class="fas fa-chevron-right"></i> Safety Tips</a></li>
+                </ul>
+            </div>
+
+            <!-- Column 4: Legal -->
+            <div class="footer-column">
+                <h3>Legal</h3>
+                <ul class="footer-links">
+                    <li><a href="../about.html"><i class="fas fa-chevron-right"></i> About Us</a></li>
+                    <li><a href="../terms-of-service.html"><i class="fas fa-chevron-right"></i> Terms of Service</a></li>
+                    <li><a href="../privacy-policy.html"><i class="fas fa-chevron-right"></i> Privacy Policy</a></li>
+                    <li><a href="../cookies-policy.html"><i class="fas fa-chevron-right"></i> Cookie Policy</a></li>
+                    <li><a href="../disclaimer.html"><i class="fas fa-chevron-right"></i> Platform Disclaimer</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="copyright">
+            &copy; 2025 UnityXhub. All rights reserved. UnityXhub was built by Filipinos, for a global digital economy.
+        </div>
+    </footer>
+
+    <!-- Load Scripts -->
+    <script src="../../js/main.js"></script>
+    <script>
+        document.getElementById('serviceForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const password = document.getElementById('password').value;
+            const confirmPassword = document.getElementById('confirmPassword').value;
+
+            if (password !== confirmPassword) {
+                alert("?? Passwords do not match. Please try again.");
+                return;
+            }
+
+            const businessName = document.getElementById('businessName').value.trim();
+
+            // Save to localStorage
+            const sellerId = 'SERVICE_' + Date.now();
+            const seller = {
+                id: sellerId,
+                username: document.getElementById('username').value.trim(),
+                businessName: businessName,
+                joined: new Date().toISOString()
+            };
+
+            localStorage.setItem('currentSeller', JSON.stringify(seller));
+            localStorage.setItem(`seller_${sellerId}`, JSON.stringify(seller));
+
+            // Success!
+            alert(`? Welcome, ${businessName}! Your business services account has been created.`);
+            window.location.href = 'business-services.html';
+        });
+    </script>
+</body>
+</html>

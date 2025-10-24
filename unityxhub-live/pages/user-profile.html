@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>My Profile – UnityXhub</title>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Reuse Global CSS -->
+    <link rel="stylesheet" href="../css/style.css">
+    <style>
+        .profile-container {
+            max-width: 1200px;
+            margin: 30px auto;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+        .profile-header {
+            padding: 20px;
+            background: var(--primary);
+            color: white;
+            font-size: 1.6rem;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .profile-sidebar {
+            width: 250px;
+            background: #f8f9fa;
+            padding: 20px;
+            border-right: 1px solid var(--gray);
+            height: calc(100vh - 100px);
+            position: sticky;
+            top: 20px;
+        }
+        .sidebar-menu {
+            list-style: none;
+            padding: 0;
+        }
+        .sidebar-menu li {
+            margin-bottom: 10px;
+        }
+        .sidebar-menu a {
+            color: #666;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 8px 0;
+            transition: color 0.2s;
+        }
+        .sidebar-menu a:hover, .sidebar-menu a.active {
+            color: var(--primary);
+        }
+        .profile-main {
+            flex: 1;
+            padding: 20px;
+        }
+        .profile-form {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 600;
+            color: var(--dark);
+        }
+        .form-control {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid var(--gray);
+            border-radius: 6px;
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+        .form-control:focus {
+            border-color: var(--primary);
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(255, 107, 0, 0.1);
+        }
+        .profile-image-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        .profile-img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            background: #eee;
+            cursor: pointer;
+            border: 3px solid #eee;
+            transition: border 0.2s;
+        }
+        .profile-img:hover {
+            border-color: var(--primary);
+        }
+        .upload-btn {
+            padding: 10px 15px;
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        .upload-btn:hover {
+            background: #e05d00;
+        }
+        .file-input {
+            display: none;
+        }
+        .gender-radio {
+            display: flex;
+            gap: 15px;
+            margin-top: 10px;
+        }
+        .gender-radio input[type="radio"] {
+            margin-right: 5px;
+        }
+        .save-btn {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 6px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        .save-btn:hover {
+            background: #e05d00;
+        }
+        .privacy-note {
+            font-size: 0.9rem;
+            color: #666;
+            margin-top: 15px;
+            text-align: center;
+        }
+        .footer-links {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 30px;
+            padding: 20px;
+            border-top: 1px solid var(--gray);
+        }
+        .footer-links a {
+            color: #666;
+            text-decoration: none;
+            font-size: 0.9rem;
+        }
+        .footer-links a:hover {
+            color: var(--primary);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="header-container">
+            <div class="logo-section">
+                <div class="site-title">UnityXhub</div>
+                <div class="slogan">My Profile</div>
+            </div>
+            <div class="search-bar">
+                <input type="text" placeholder="Search products...">
+                <div class="search-icon">
+                    <i class="fas fa-search"></i>
+                </div>
+            </div>
+            <div class="auth-buttons">
+                <a href="../cart.html" class="btn btn-outline">
+                    <i class="fas fa-shopping-cart"></i> Cart
+                </a>
+                <button class="btn btn-primary" id="logoutBtn">
+                    <i class="fas fa-sign-out-alt"></i> Logout
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Navigation Tabs -->
+    <div class="nav-tabs">
+        <div class="tabs-container">
+            <a href="../index.html"><i class="fas fa-home"></i> Home</a>
+            <a href="shopping.html"><i class="fas fa-shopping-cart"></i> Shopping</a>
+            <a href="jobs.html"><i class="fas fa-briefcase"></i> Jobs</a>
+            <a href="freelancer.html"><i class="fas fa-hammer"></i> Freelance</a>
+            <a href="business-directory.html"><i class="fas fa-building"></i> Business</a>
+            <a href="classifieds.html"><i class="fas fa-ad"></i> Classifieds</a>
+            <a href="#" class="active"><i class="fas fa-user"></i> My Profile</a>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <main>
+        <div class="profile-container">
+            <div class="profile-header">
+                <i class="fas fa-user"></i> My Profile
+            </div>
+            <div style="display: flex;">
+                <div class="profile-sidebar">
+                    <div style="margin-bottom: 20px;">
+                        <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 15px;">
+                            <img src="https://via.placeholder.com/40x40" alt="Profile" style="width: 40px; height: 40px; border-radius: 50%;">
+                            <span>ken stone</span>
+                            <a href="#" style="color: #666; font-size: 0.9rem;">Edit Profile</a>
+                        </div>
+                        <ul class="sidebar-menu">
+                            <li><a href="#" class="active"><i class="fas fa-user"></i> Profile</a></li>
+                            <li><a href="#"><i class="fas fa-credit-card"></i> Banks & Cards</a></li>
+                            <li><a href="#"><i class="fas fa-map-marker-alt"></i> Addresses</a></li>
+                            <li><a href="#"><i class="fas fa-key"></i> Change Password</a></li>
+                            <li><a href="#"><i class="fas fa-shield-alt"></i> Privacy Settings</a></li>
+                            <li><a href="#"><i class="fas fa-bell"></i> Notification Settings</a></li>
+                        </ul>
+                        <hr style="border: 1px solid #eee; margin: 20px 0;">
+                        <ul class="sidebar-menu">
+                            <li><a href="#"><i class="fas fa-shopping-cart"></i> My Purchase</a></li>
+                            <li><a href="#"><i class="fas fa-bell"></i> Notifications</a></li>
+                            <li><a href="#"><i class="fas fa-ticket-alt"></i> My Vouchers</a></li>
+                            <li><a href="#"><i class="fas fa-coins"></i> My Unity Coins</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="profile-main">
+                    <div class="profile-form">
+                        <h2>My Profile</h2>
+                        <p style="color: #666; margin-bottom: 20px;">Manage and protect your account</p>
+
+                        <div class="form-group">
+                            <label for="username">Username</label>
+                            <input type="text" id="username" class="form-control" value"ken stone" readonly>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="name">Name</label>
+                            <input type="text" id="name" class="form-control" placeholder="Full Name">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <div style="display: flex; align-items: center; gap: 10px;">
+                                <span class="form-control" style="padding: 12px; background: #f8f9fa; border: 1px solid #ddd;">********@gmail.com</span>
+                                <a href="#" class="change-link">Change</a>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="phone">Phone Number</label>
+                            <div style="display: flex; align-items: center; gap: 10px;">
+                                <span class="form-control" style="padding: 12px; background: #f8f9fa; border: 1px solid #ddd;">*********</span>
+                                <a href="#" class="change-link">Change</a>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Gender</label>
+                            <div class="gender-radio">
+                                <label><input type="radio" name="gender" value="male" checked> Male</label>
+                                <label><input type="radio" name="gender" value="female"> Female</label>
+                                <label><input type="radio" name="gender" value="other"> Other</label>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="dob">Date of Birth</label>
+                            <div style="display: flex; align-items: center; gap: 10px;">
+                                <input type="text" id="dob" class="form-control" placeholder="MM/DD/YYYY" style="width: 150px;">
+                                <a href="#" class="change-link">Change</a>
+                            </div>
+                        </div>
+
+                        <div class="profile-image-section">
+                            <img id="profileImg" src="https://via.placeholder.com/120x120" alt="Profile" class="profile-img">
+                            <input type="file" id="imageUpload" class="file-input" accept=".jpg,.jpeg,.png">
+                            <button class="upload-btn" onclick="document.getElementById('imageUpload').click()">Select Image</button>
+                            <p style="font-size: 0.8rem; color: #666;">
+                                File size: maximum 1 MB<br>
+                                File extension: .JPEG, .PNG
+                            </p>
+                        </div>
+
+                        <button class="save-btn" onclick="saveProfile()">Save</button>
+
+                        <p class="privacy-note">
+                            Your personal information is protected under the Data Privacy Act of 2012 (RA 10173). We never share your data with third parties.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>CUSTOMER SERVICE</h3>
+                <ul class="footer-links">
+                    <li><a href="#">Help Centre</a></li>
+                    <li><a href="#">Shopee Cares PH</a></li>
+                    <li><a href="#">Payment Methods</a></li>
+                    <li><a href="#">ShopeePay</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>ABOUT UNITYXHUB</h3>
+                <ul class="footer-links">
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">UnityXhub Blog</a></li>
+                    <li><a href="#">Careers</a></li>
+                    <li><a href="#">Policies</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>PAYMENT</h3>
+                <div style="display: flex; gap: 10px; margin-top: 10px;">
+                    <img src="https://via.placeholder.com/50x30" alt="GCash" style="height: 30px;">
+                    <img src="https://via.placeholder.com/50x30" alt="PayMaya" style="height: 30px;">
+                    <img src="https://via.placeholder.com/50x30" alt="Visa" style="height: 30px;">
+                </div>
+            </div>
+            <div class="footer-column">
+                <h3>FOLLOW US</h3>
+                <div style="display: flex; gap: 10px; margin-top: 10px;">
+                    <a href="#"><i class="fab fa-facebook-f"></i> Facebook</a>
+                    <a href="#"><i class="fab fa-instagram"></i> Instagram</a>
+                    <a href="#"><i class="fab fa-twitter"></i> Twitter</a>
+                </div>
+            </div>
+        </div>
+        <div class="copyright">
+            &copy; 2025 UnityXhub. All rights reserved. Built by Filipinos, for a global digital economy.
+        </div>
+    </footer>
+
+    <!-- ✅ Load Scripts -->
+    <script src="../js/main.js"></script>
+
+    <script>
+        // Load user data on load
+        document.addEventListener('DOMContentLoaded', () => {
+            const userData = JSON.parse(localStorage.getItem('unityxhub_user')) || {};
+            if (userData.name) document.getElementById('name').value = userData.name;
+            if (userData.gender) {
+                document.querySelector(`input[name="gender"][value="${userData.gender}"]`).checked = true;
+            }
+            if (userData.dob) document.getElementById('dob').value = userData.dob;
+            if (userData.image) {
+                document.getElementById('profileImg').src = userData.image;
+            }
+        });
+
+        // Save Profile
+        function saveProfile() {
+            const name = document.getElementById('name').value.trim();
+            const gender = document.querySelector('input[name="gender"]:checked')?.value;
+            const dob = document.getElementById('dob').value;
+
+            if (!name) {
+                alert("Please enter your full name.");
+                return;
+            }
+
+            const userData = {
+                name,
+                gender,
+                dob,
+                image: document.getElementById('profileImg').src
+            };
+
+            localStorage.setItem('unityxhub_user', JSON.stringify(userData));
+            alert("Profile saved successfully!");
+        }
+
+        // Image Upload
+        document.getElementById('imageUpload').addEventListener('change', (e) => {
+            const file = e.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(event) {
+                    document.getElementById('profileImg').src = event.target.result;
+                };
+                reader.readAsDataURL(file);
+            }
+        });
+
+        // Logout
+        document.getElementById('logoutBtn').addEventListener('click', () => {
+            if (confirm("Are you sure you want to log out?")) {
+                localStorage.removeItem('unityxhub_user');
+                window.location.href = '../index.html';
+            }
+        });
+    </script>
+
+</body>
+</html>

@@ -1,1226 +1,255 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>UnityXhub – Your All In One Digital Ecosystem</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>🚀 UnityXhub — Coming Soon</title>
+
+    <!-- Favicon -->
+    <link rel="icon" href="assets/image/logo/uxh.jpg" type="image/jpg">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Segoe+UI&display=swap" rel="stylesheet">
+
     <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Reuse Global CSS -->
-    <link rel="stylesheet" href="css/style.css">
-	<style>
-        background: #f8f9fa;
-    }
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
 
-    .message {
-        max-width: 80%;
-        padding: 12px 16px;
-        border-radius: 18px;
-        line-height: 1.5;
-        font-size: 0.95rem;
-    }
-
-    .bot {
-        align-self: flex-start;
-        background: #e9ecef;
-        color: var(--dark);
-        border-bottom-left-radius: 5px;
-    }
-
-    .user {
-        align-self: flex-end;
-        background: var(--primary);
-        color: white;
-        border-bottom-right-radius: 5px;
-    }
-
-    .chat-input-section {
-        padding: 15px;
-        background: white;
-        display: flex;
-        gap: 10px;
-        border-top: 1px solid var(--gray);
-    }
-
-    #userMessageInput {
-        flex: 1;
-        padding: 10px;
-        border: 1px solid var(--gray);
-        border-radius: 8px;
-        font-size: 0.95rem;
-        resize: none;
-        outline: none;
-    }
-
-    .send-btn {
-        padding: 0 15px;
-        background: var(--primary);
-        color: white;
-        border: none;
-        border-radius: 8px;
-        font-size: 1.1rem;
-        cursor: pointer;
-    }
     <style>
-        /* Inline fallback styles in case external CSS fails */
         :root {
             --primary: #ff6b00;
-            --secondary: #d32f2f;
             --dark: #1a1a1a;
             --light: #f5f5f5;
             --gray: #e0e0e0;
             --transition: all 0.3s ease;
         }
-        
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Segoe UI', 'Poppins', sans-serif;
         }
 
         body {
-            background-color: #f5f7fb;
-            color: #333;
+            background: linear-gradient(135deg, #0d0d0d, #1a1a1a);
+            color: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            text-align: center;
+            padding: 0 1rem;
+            overflow: hidden;
+        }
+
+        .logo {
+            width: 120px;
+            height: 120px;
+            margin-bottom: 1.5rem;
+            animation: float 3s ease-in-out infinite;
+            filter: drop-shadow(0 0 10px var(--primary));
+            border-radius: 12px;
+            object-fit: cover;
+        }
+
+        .logo:hover {
+            transform: scale(1.05);
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        p {
+            color: #ccc;
+            font-size: 1rem;
+            max-width: 480px;
+            margin-bottom: 1.5rem;
             line-height: 1.6;
         }
 
-        .header-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px;
+        /* Countdown */
+        .countdown {
             display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            color: white;
-            border-radius: 0 0 10px 10px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            gap: 15px;
+            justify-content: center;
+            margin-bottom: 2rem;
         }
 
-        .logo-section {
-            display: flex;
-            flex-direction: column;
+        .time-box {
+            background: #222;
+            padding: 15px 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(255, 107, 0, 0.3);
         }
 
-        .site-title {
-            font-size: 28px;
-            font-weight: 700;
+        .time-box span {
+            display: block;
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: var(--primary);
+        }
+
+        .time-box small {
+            color: #aaa;
+            font-size: 0.8rem;
+            text-transform: uppercase;
             letter-spacing: 1px;
         }
 
-        .slogan {
-            font-size: 14px;
-            opacity: 0.9;
-        }
-
-        .search-bar {
-            flex: 1;
-            max-width: 500px;
-            margin: 0 20px;
-            position: relative;
-        }
-
-        .search-bar input {
-            width: 100%;
-            padding: 12px 40px 12px 16px;
-            border: none;
-            border-radius: 6px;
-            font-size: 1rem;
-        }
-
-        .search-icon {
-            position: absolute;
-            right: 12px;
-            top: 50%;
-            transform: translateY(-50%);
-            color: #666;
-            cursor: pointer;
-        }
-
-        .auth-buttons .btn {
-            margin-left: 10px;
-        }
-
-        .hamburger {
-            display: none;
-            font-size: 1.5rem;
-            color: white;
-            cursor: pointer;
-        }
-
-        .nav-tabs {
-            background: white;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-            margin: 20px 0;
-        }
-
-        .tabs-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-            display: flex;
-            overflow-x: auto;
-        }
-
-        .tabs-container a {
-            padding: 15px 20px;
-            text-decoration: none;
-            color: var(--dark);
-            display: flex;
-            align-items: center;
-            transition: var(--transition);
-            border-bottom: 3px solid transparent;
-        }
-
-        .tabs-container a:hover {
-            background: #f8f9fa;
-        }
-
-        .tabs-container a.active {
-            color: var(--primary);
-            border-bottom: 3px solid var(--primary);
-        }
-
-        .tabs-container i {
-            margin-right: 8px;
-        }
-
-        .sliding-banner {
-            background: #800080;
-            color: white;
-            padding: 10px 0;
-            overflow: hidden;
-            white-space: nowrap;
-        }
-
-        .sliding-text {
-            display: inline-block;
-            animation: slideLeft 30s linear infinite;
-            padding-left: 100%;
-            font-size: 17px;
-            font-weight: 550;
-        }
-
-        @keyframes slideLeft {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(-100%); }
-        }
-
-        .hero-carousel {
-            position: relative;
-            height: 300px;
-            margin: 20px auto;
-            max-width: 1200px;
-            overflow: hidden;
-            border-radius: 12px;
-        }
-
-        .hero-slide {
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            color: white;
-            text-align: center;
-            padding: 20px;
-            display: none;
-        }
-
-        .hero-slide.active {
-            display: flex;
-        }
-
-        .hero-slide h2 {
-            font-size: 2rem;
-            margin-bottom: 10px;
-        }
-
-        .carousel-indicators {
-            position: absolute;
-            bottom: 20px;
-            left: 50%;
-            transform: translateX(-50%);
+        /* Email Form */
+        form {
             display: flex;
             gap: 10px;
-        }
-
-        .indicator {
-            width: 12px;
-            height: 12px;
-            background: rgba(255,255,255,0.5);
-            border-radius: 50%;
-            cursor: pointer;
-        }
-
-        .indicator.active {
-            background: white;
-        }
-
-        .categories {
-            display: flex;
+            margin-bottom: 2rem;
             flex-wrap: wrap;
-            gap: 15px;
-            padding: 20px;
-            background: #f8f9fa;
-            border-bottom: 1px solid var(--gray);
-        }
-
-        .category {
-            flex: 1;
-            min-width: 120px;
-            padding: 15px;
-            background: white;
-            border-radius: 10px;
-            text-align: center;
-            cursor: pointer;
-            transition: var(--transition);
-        }
-
-        .category:hover {
-            background: var(--primary);
-            color: white;
-        }
-
-        .trending-carousel,
-        .section {
-            max-width: 1200px;
-            margin: 40px auto;
-            padding: 0 20px;
-        }
-
-        .auto-scroll-container {
-            display: flex;
-            gap: 20px;
-            overflow-x: auto;
-            padding: 10px 0;
-            scroll-snap-type: x mandatory;
-        }
-
-        .auto-scroll-item {
-            min-width: 250px;
-            flex: 0 0 auto;
-            background: white;
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-            scroll-snap-align: start;
-        }
-
-        .auto-scroll-item h4 {
-            padding: 15px;
-        }
-
-        .auto-scroll-item p {
-            padding: 0 15px 10px;
-            color: #666;
-            font-size: 0.9rem;
-        }
-
-        .badge {
-            background: var(--primary);
-            color: white;
-            padding: 5px 10px;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            margin: 0 15px 15px;
-            display: inline-block;
-        }
-
-        .section-title {
-            font-size: 1.5rem;
-            margin-bottom: 20px;
-            color: var(--dark);
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .founder-container {
-            max-width: 1200px;
-            margin: 60px auto;
-            padding: 0 20px;
-            position: relative;
-        }
-
-        .brand-13 {
-            position: center;
-            top: -30px;
-            left: 0;
-            background: var(--primary);
-            color: white;
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: bold;
-            font-size: 1.2rem;
-        }
-
-        .founder-message {
-            background: white;
-            padding: 30px;
-            border-radius: 12px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-            line-height: 1.8;
-            font-size: 1rem;
-        }
-
-        .founder-message.expanded {
-            max-height: none;
-            overflow: visible;
-        }
-
-        .read-more-btn {
-            max-width: 200px;
-            margin: 20px auto;
-            padding: 12px 20px;
-            background: var(--primary);
-            color: white;
-            border: none;
-            border-radius: 8px;
-            font-size: 1rem;
-            cursor: pointer;
-            display: block;
-        }
-
-        .founder-signature {
-            margin-top: 30px;
-            font-style: italic;
-            color: #555;
-        }
-
-        .founder-name {
-            font-weight: 600;
-            color: var(--primary);
-        }
-
-        .founder-role {
-            font-size: 0.9rem;
-            color: #666;
-        }
-
-        footer {
-            background: var(--dark);
-            color: white;
-            padding: 40px 0 20px;
-            margin-top: 60px;
-        }
-
-        .footer-content {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
-        }
-
-        .footer-column h3 {
-            margin-bottom: 15px;
-            font-size: 1.2rem;
-        }
-
-        .footer-links {
-            list-style: none;
-        }
-
-        .footer-links li {
-            margin: 8px 0;
-        }
-
-        .footer-links a {
-            color: #ddd;
-            text-decoration: none;
-            font-size: 0.95rem;
-        }
-
-        .footer-links a:hover {
-            color: var(--primary);
-        }
-
-        .payment-methods {
-            display: flex;
-            gap: 10px;
-            margin-top: 15px;
-            flex-wrap: wrap;
-        }
-
-        .payment-method {
-            background: #444;
-            padding: 5px 10px;
-            border-radius: 6px;
-            font-size: 0.8rem;
-        }
-
-        .copyright {
-            text-align: center;
-            padding-top: 20px;
-            border-top: 1px solid rgba(255,255,255,0.1);
-            margin-top: 30px;
-            color: #aaa;
-            font-size: 0.9rem;
-        }
-
-        /* Floating Chat Widget */
-        #supportChatWidget {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            z-index: 1000;
-            width: 380px;
-            max-width: 90vw;
-        }
-
-        .chat-toggle {
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            background: var(--primary);
-            color: white;
-            border: none;
-            font-size: 1.5rem;
-            cursor: pointer;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-            display: flex;
-            align-items: center;
             justify-content: center;
         }
 
-        .chat-box {
-            background: white;
-            border-radius: 12px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
-            overflow: hidden;
-            margin-top: 10px;
-            display: none;
-        }
-
-        .chat-header {
-            padding: 15px;
-            background: var(--primary);
-            color: white;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            font-weight: 600;
-        }
-
-        .chat-minimize {
-            background: rgba(255,255,255,0.2);
-            border: none;
-            color: white;
-            width: 30px;
-            height: 30px;
-            border-radius: 50%;
-            cursor: pointer;
-        }
-
-        .chat-body {
-            padding: 15px;
-            height: 300px;
-            overflow-y: auto;
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-            background: #f8f9fa;
-        }
-
-        .message {
-            max-width: 80%;
-            padding: 12px 16px;
-            border-radius: 18px;
-            line-height: 1.5;
-            font-size: 0.95rem;
-        }
-
-        .bot {
-            align-self: flex-start;
-            background: #e9ecef;
-            color: var(--dark);
-            border-bottom-left-radius: 5px;
-        }
-
-        .user {
-            align-self: flex-end;
-            background: var(--primary);
-            color: white;
-            border-bottom-right-radius: 5px;
-        }
-
-        .typing-indicator {
-            display: flex;
-            justify-content: flex-start;
-            gap: 5px;
-            padding: 10px;
-            color: #666;
-            font-size: 0.9rem;
-        }
-
-        .typing-indicator span {
-            width: 8px;
-            height: 8px;
-            background: #999;
-            border-radius: 50%;
-            animation: bounce 1.5s infinite ease-in-out;
-        }
-
-        .typing-indicator span:nth-child(2) { animation-delay: 0.2s; }
-        .typing-indicator span:nth-child(3) { animation-delay: 0.4s; }
-
-        @keyframes bounce {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-5px); }
-        }
-
-        .chat-input-section {
-            padding: 15px;
-            background: white;
-            display: flex;
-            gap: 10px;
-            border-top: 1px solid var(--gray);
-        }
-
-        #userMessageInput {
-            flex: 1;
-            padding: 10px;
-            border: 1px solid var(--gray);
+        input[type="email"] {
+            padding: 0.8rem 1rem;
             border-radius: 8px;
-            font-size: 0.95rem;
-            resize: none;
+            border: none;
             outline: none;
-        }
-
-        .send-btn {
-            padding: 0 15px;
-            background: var(--primary);
-            color: white;
-            border: none;
-            border-radius: 8px;
-            font-size: 1.1rem;
-            cursor: pointer;
-        }
-
-        /* Mobile Nav */
-        .mobile-nav {
-            position: fixed;
-            top: 0;
-            right: -300px;
-            width: 280px;
-            height: 100%;
-            background: white;
-            box-shadow: -5px 0 15px rgba(0,0,0,0.1);
-            z-index: 1000;
-            transition: right 0.3s ease;
-            overflow-y: auto;
-        }
-
-        .mobile-nav.active {
-            right: 0;
-        }
-
-        .mobile-nav-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 20px;
-            background: var(--primary);
-            color: white;
-        }
-
-        .close-mobile-nav {
-            font-size: 1.5rem;
-            background: none;
-            border: none;
-            color: white;
-            cursor: pointer;
-        }
-
-        .mobile-nav-links {
-            list-style: none;
-            padding: 20px;
-        }
-
-        .mobile-nav-links li {
-            margin-bottom: 15px;
-        }
-
-        .mobile-nav-links a {
-            color: var(--dark);
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0,0,0,0.7);
-            z-index: 1000;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .modal-content {
-            background: white;
-            padding: 30px;
-            border-radius: 12px;
-            width: 90%;
-            max-width: 500px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-        }
-
-        .close-modal {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            font-size: 1.5rem;
-            background: none;
-            border: none;
-            cursor: pointer;
-        }
-
-        .social-login {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-            margin-bottom: 20px;
-        }
-
-        .social-btn {
-            padding: 12px;
-            border: none;
-            border-radius: 8px;
+            min-width: 220px;
             font-size: 1rem;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            gap: 10px;
         }
 
-        .google-btn {
-            background: #db4437;
+        button {
+            background: var(--primary);
+            border: none;
+            border-radius: 8px;
+            padding: 0.8rem 1.2rem;
             color: white;
-        }
-
-        .facebook-btn {
-            background: #3b5998;
-            color: white;
-        }
-
-        .divider {
-            text-align: center;
-            margin: 20px 0;
-            color: #666;
-            position: relative;
-        }
-
-        .divider::before {
-            content: "";
-            position: absolute;
-            top: 50%;
-            left: 0;
-            right: 0;
-            border-top: 1px solid #ddd;
-        }
-
-        .divider span {
-            background: white;
-            padding: 0 15px;
-            position: relative;
-            z-index: 1;
-        }
-
-        .form-group {
-            margin-bottom: 15px;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 5px;
             font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
         }
 
-        .form-control {
-            width: 100%;
-            padding: 10px;
-            border: 1px solid #ddd;
-            border-radius: 6px;
-            font-size: 1rem;
+        button:hover {
+            background: #ff8533;
+            transform: translateY(-2px);
         }
 
-        .terms-section {
-            display: flex;
-            align-items: flex-start;
-            gap: 10px;
-            margin: 15px 0;
-        }
-
-        .terms-text {
-            font-size: 0.9rem;
-            color: #666;
-        }
-
-        .cart-badge {
+        /* Footer */
+        .footer {
             position: absolute;
-            top: -8px;
-            right: -8px;
-            background: var(--secondary);
-            color: white;
-            width: 20px;
-            height: 20px;
-            border-radius: 50%;
-            font-size: 0.8rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            bottom: 15px;
+            font-size: 0.9rem;
+            color: #888;
         }
 
-        .cart-notification {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            background: #4caf50;
-            color: white;
-            padding: 15px 20px;
-            border-radius: 8px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            z-index: 1000;
-            opacity: 0;
-            transition: opacity 0.3s ease;
+        /* Responsive */
+        @media (max-width: 600px) {
+            h1 { font-size: 2rem; }
+            .countdown { flex-wrap: wrap; gap: 10px; }
+            .time-box { padding: 10px 15px; }
+            input[type="email"] { min-width: 180px; }
         }
-
-        .cart-notification.show {
-            opacity: 1;
-        }
-    </style>
-	<script>
-    // ✅ Wait for DOM to load
-    document.addEventListener('DOMContentLoaded', () => {
-        const chatToggle = document.getElementById('chatToggle');
-        const chatBox = document.getElementById('chatBox');
-        const chatMinimize = document.getElementById('chatMinimize');
-
-        // ✅ Open Chat
-        if (chatToggle && chatBox) {
-            chatToggle.addEventListener('click', () => {
-                chatBox.style.display = 'block';
-                chatToggle.style.display = 'none';
-            });
-        }
-
-        // ✅ CLOSE CHAT WITH (X) – THIS WAS BROKEN, NOW FIXED
-        if (chatMinimize && chatBox) {
-            chatMinimize.addEventListener('click', () => {
-                chatBox.style.display = 'none';
-                chatToggle.style.display = 'flex'; // Show button again
-            });
-        }
-
-        // ✅ Send Message (if you have input)
-        const userInput = document.getElementById('userMessageInput');
-        window.sendUserMessage = function() {
-            const text = userInput?.value.trim();
-            if (!text) return;
-
-            const chatBody = document.getElementById('chatBody');
-            const msgEl = document.createElement('div');
-            msgEl.className = 'message user';
-            msgEl.textContent = text;
-            chatBody.appendChild(msgEl);
-            chatBody.scrollTop = chatBody.scrollHeight;
-
-            userInput.value = '';
-
-            // Bot reply after delay
-            setTimeout(() => {
-                const reply = document.createElement('div');
-                reply.className = 'message bot';
-                reply.innerHTML = "Thanks for your message! Our team will get back soon.";
-                chatBody.appendChild(reply);
-                chatBody.scrollTop = chatBody.scrollHeight;
-            }, 1000);
-        };
-
-        // Allow Enter to send
-        userInput?.addEventListener('keydown', (e) => {
-            if (e.key === 'Enter' && !e.shiftKey) {
-                e.preventDefault();
-                sendUserMessage();
-            }
-        });
-    });
-</script>
-</head>
-<body>
-		<!-- Firebase SDK -->
-		<script type="module">
-		  // Import Firebase Modules
-		  import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js';
-		  import { getAuth, onAuthStateChanged, signInWithPopup, GoogleAuthProvider, FacebookAuthProvider }
-			from 'https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js';
-
-         // Your web app's Firebase configuration
-		 const firebaseConfig = {
-		   apiKey: "AIzaSyDEla94LGEQiWwzQSy3yUDGFHrtSFBoYbI",
-		   authDomain: "unityxhub-4ae93.firebaseapp.com",
-		   projectId: "unityxhub-4ae93",
-		   storageBucket: "unityxhub-4ae93.firebasestorage.app",
-		   messagingSenderId: "148702331946",
-		   appId: "1:148702331946:web:eefe1920ecc1f29963af53"
-		 };
-
-		// Initialize Firebase
-		const app = initializeApp(firebaseConfig);
-		const auth = getAuth();
-		const googleProvider = new GoogleAuthProvider();
-		const facebookProvider = new FacebookAuthProvider();
-
-		// Providers
-		const googleProvider = new GoogleAuthProvider();
-		const facebookProvider = new FacebookAuthProvider();
-		
-		// Listen for auth state changes in real time
-		onAuthStateChanged(auth, (user) => {
-		  const signInBtn = document.getElementById('signInBtn');
-		  if (signInBtn) {
-			if (user) {
-			  console.log("🟢 User signed in:", user.displayName, user.email);
-			  signInBtn.textContent = `👋 ${user.displayName}`;
-			  signInBtn.onclick = () => window.location.href = 'pages/seller/seller-dashboard.html';
-		   } else {
-			 console.log("🔴 No user signed in");
-			 signInBtn.textContent = 'Log In';
-			 signInBtn.onclick = () => {
-			   document.getElementById('signInModal').style.display = 'flex';
-			   document.body.style.overflow = 'hidden';
-			 };
-		   }
-		 }
-	   });
-		
-		// Sign In Functions (make global)
-		window.signInWithGoogle = () => {
-		  signInWithPopup(auth, googleProvider)
-			.then((result) => {
-			  alert(`✅ Welcome, ${result.user.displayName}!`);
-			  document.getElementById('signInModal').style.display = 'none';
-			 })
-			 .catch((error) => {
-			   alert("❌ Error: " + error.message);
-			   console.error(error);
-			 });
-		  };
-		  
-		window.signInWithFacebook = () => {
-		  signInWithPopup(auth, facebookProvider)
-			.then((result) => {
-			  alert(`✅ Welcome, ${result.user.displayName}!`);
-			  document.getElementById('signInModal').style.display = 'none';
-			 })
-		     .catch((error) => {
-			   alert("❌ Error: " + error.message);
-			   console.error(error);
-			});
-		 };
-
-		window.logout = () => {
-		  signOut(auth).then(() => {
-			alert("👋 See you next time!");
-			location.reload();
-		  }).catch((err) => {
-			alert("Error: " + err.message);
-		  });
-		};
-	</script>
-		
-			// Make available globally
-			window.firebaseAuth = auth;
-			window.googleProvider = googleProvider;
-			window.facebookProvider = facebookProvider;
-
-			// Listen for auth state changes
-			onAuthStateChanged(auth, (user) => {
-				const signInBtn = document.getElementById('signInBtn');
-				if (signInBtn) {
-					if (user) {
-						signInBtn.textContent = `👋 ${user.displayName}`;
-						signInBtn.onclick = () => window.location.href = 'pages/seller/seller-dashboard.html';
-					} else {
-						signInBtn.textContent = 'Log In';
-						signInBtn.onclick = () => {
-							document.getElementById('signInModal').style.display = 'flex';
-							document.body.style.overflow = 'hidden';
-						};
-					}
-				}
-			});
-		</script>
-
-    <style>
-        /* Ensure chat widget is hidden initially */
-        #supportChatWidget .chat-box { display: none; }
-        #chatToggle { display: flex; }
     </style>
 </head>
 <body>
 
-    <!-- Header -->
-    <header>
-        <div class="header-container">
-            <div class="logo-section">
-                <div class="site-title">UnityXhub</div>
-                <div class="slogan">All in one digital ecosystem</div>
-            </div>
-            <div class="search-bar">
-                <input type="text" placeholder="Search products, services, jobs...">
-                <div class="search-icon">
-					<i class="fas fa-search"></i>
-				</div>
-            </div>
-			<!-- Google Button -->
-			<button class="social-btn google-btn" onclick="signInWithGoogle()">
-				<i class="fab fa-google"></i> Sign in with Google
-			</button>
-			<!-- Facebook Button -->
-			<button class="social-btn facebook-btn" onclick="signInWithFacebook()">
-				<i class="fab fa-facebook-f"></i> Sign in with Facebook
-			</button>
-            <div class="auth-buttons">
-                <button class="btn btn-outline" id="signInBtn">
-					<i class="fas fa-user"></i> Log In
-				</button>
-                <a href="pages/seller/cart.html" class="btn btn-outline">
-                    <i class="fas fa-shopping-cart"></i> Cart
-                    <span id="cartBadge" class="cart-badge">0</span>
-                </a>
-            </div>
-            <div class="hamburger" id="hamburger"><i class="fas fa-bars"></i></div>
-        </div>
-    </header>
+    <!-- Logo -->
+    <img 
+        src="assets/image/logo/uxh.jpg" 
+        alt="UnityXhub Logo" 
+        class="logo"
+        onerror="this.onerror=null;this.src='https://via.placeholder.com/120?text=UXH';this.style.backgroundColor='#fff';">
 
-    <!-- Sliding Banner -->
-    <div class="sliding-banner">
-        <div class="sliding-text">
-            UnityXhub was built eco friendly, for a global digital economy. We believe everyone deserves a chance to grow, create, and make a change. Join millions of users today!
+    <!-- Title -->
+    <h1>UnityXhub is Coming!</h1>
+    <p>
+        We’re building something powerful — a digital home where Filipinos can buy, sell, work, and grow.<br>
+        Your one-stop hub for everything online.
+    </p>
+
+    <!-- Countdown -->
+    <div class="countdown">
+        <div class="time-box">
+            <span id="days">30</span>
+            <small>Days</small>
+        </div>
+        <div class="time-box">
+            <span id="hours">08</span>
+            <small>Hours</small>
+        </div>
+        <div class="time-box">
+            <span id="minutes">50</span>
+            <small>Minutes</small>
+        </div>
+        <div class="time-box">
+            <span id="seconds">00</span>
+            <small>Seconds</small>
         </div>
     </div>
 
-    <!-- Navigation Tabs -->
-    <div class="nav-tabs">
-        <div class="tabs-container">
-            <a href="#" class="active"><i class="fas fa-home"></i> Home</a>
-            <a href="pages/seller/shopping.html"><i class="fas fa-shopping-cart"></i> Shopping</a>
-            <a href="pages/jobs/job.html"><i class="fas fa-briefcase"></i> Jobs</a>
-            <a href="pages/services/business-feed.html"><i class="fas fa-wrench"></i> Services</a>
-            <a href="pages/freelancer/freelance-newsfeed.html"><i class="fas fa-hammer"></i> Freelance</a>
-            <a href="pages/business/business-directory.html"><i class="fas fa-building"></i> Business</a>
-            <a href="pages/classifiedads/classifieds.html"><i class="fas fa-ad"></i> Classifieds</a>
-        </div>
-    </div>
-
-    <!-- Hero Carousel -->
-    <div class="hero-carousel">
-        <div class="hero-slide active" style="background:linear-gradient(45deg,#ff9a9e,#fad0c4)">
-            <h2>🎉 Welcome to UnityXhub</h2>
-            <p>Your one-stop digital ecosystem for Filipinos.</p>
-        </div>
-        <div class="hero-slide" style="background:linear-gradient(45deg,#667eea,#764ba2)">
-            <h2>🛠️ Hire Local Pros</h2>
-            <p>Electricians, plumbers, painters — all verified.</p>
-        </div>
-        <div class="hero-slide" style="background:linear-gradient(45deg,#f093fb,#f5576c)">
-            <h2>🛍️ Shop Small Businesses</h2>
-            <p>Support local sellers across the Philippines.</p>
-        </div>
-        <div class="hero-slide" style="background:linear-gradient(45deg,#4facfe,#00f2fe)">
-            <h2>💼 Find Remote Jobs</h2>
-            <p>Freelance, part-time, full-time — all in one place.</p>
-        </div>
-        <div class="carousel-indicators">
-            <span class="indicator active"></span>
-            <span class="indicator"></span>
-            <span class="indicator"></span>
-            <span class="indicator"></span>
-        </div>
-    </div>
-
-    <!-- Trending Now -->
-    <div class="trending-carousel">
-        <div class="trending-item"><div class="trending-img">Trending 1</div><h4>Smartphone Deals</h4></div>
-        <div class="trending-item"><div class="trending-img">Trending 2</div><h4>Laptop Discounts</h4></div>
-        <div class="trending-item"><div class="trending-img">Trending 3</div><h4>Home Appliances</h4></div>
-    </div>
-
-    <!-- Seller Spotlight -->
-    <div class="seller-spotlight">
-        <div class="seller-header">
-            <div class="seller-title"><i class="fas fa-store"></i> Top Sellers</div>
-            <a href="pages/shopping.html" class="btn btn-outline">View All</a>
-        </div>
-        <div class="sellers-grid">
-            <div class="seller-card">
-                <div class="seller-img">Tech Pro Store</div>
-                <div class="seller-info">
-                    <div class="seller-name">Tech Pro Store</div>
-                    <div class="seller-rating"><i class="fas fa-star"></i> 4.9 (2.1k)</div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Job Finder Feed -->
-    <section class="section">
-        <h2 class="section-title"><i class="fas fa-briefcase"></i> Latest Job Offers</h2>
-        <div class="auto-scroll-container" id="jobFeed"><!-- Auto-filled --></div>
-    </section>
-
-    <!-- Freelancer News Feed -->
-    <section class="section">
-        <h2 class="section-title"><i class="fas fa-hammer"></i> Featured Freelancers</h2>
-        <div class="auto-scroll-container" id="freelancerFeed"><!-- Auto-filled --></div>
-    </section>
-
-    <!-- Classified Ads -->
-    <section class="section">
-        <h2 class="section-title"><i class="fas fa-ad"></i> Popular Classifieds</h2>
-        <div class="auto-scroll-container" id="classifiedsFeed"><!-- Auto-filled --></div>
-    </section>
-
-    <!-- Business Directory -->
-    <section class="section">
-        <h2 class="section-title"><i class="fas fa-building"></i> Business Partnerships</h2>
-        <div class="auto-scroll-container" id="businessFeed"><!-- Auto-filled --></div>
-    </section>
-
-    <!-- Founder's Message -->
-    <div class="founder-container">
-        <div class="brand-13">13</div>
-        <div class="founder-message" id="founderMessage">
-            <div class="message-content">
-                <p>Hello and welcome to UnityXhub.</p>
-                <p>I built UnityXhub with one dream...</p>
-                <!-- Full message as before -->
-            </div>
-        </div>
-        <button class="read-more-btn" id="readMoreBtn">Read More</button>
-    </div>
-
-    <!-- Mobile Nav -->
-    <div class="mobile-nav" id="mobileNav">
-        <div class="mobile-nav-header">
-            <div class="site-title">UnityXhub</div>
-            <button class="close-mobile-nav">&times;</button>
-        </div>
-        <ul class="mobile-nav-links">
-            <li><a href="pages/welcome.html"><i class="fas fa-chevron-right"></i> Welcome User</a></li>
-            <li><a href="pages/seller/shopping.html"><i class="fas fa-shopping-cart"></i> Shopping</a></li>
-            <!-- Other links -->
-        </ul>
-    </div>
+    <!-- Notify Me Form -->
+    <form onsubmit="saveEmailAndNotify(event)">
+        <input type="email" placeholder="Enter your email" id="emailInput" required />
+        <button type="submit">🔔 Notify Me</button>
+    </form>
 
     <!-- Footer -->
-    <footer>
-        <!-- Footer content -->
-    </footer>
-
-    <!-- Sign In Modal -->
-    <div class="modal" id="signInModal">
-        <div class="modal-content">
-            <div class="modal-header">
-			<button class="close-modal">&times;</button><h2>Sign In</h2></div>
-            <div class="modal-body">
-                <div class="social-login">
-                    <button class="social-btn google-btn" onclick="signInWithGoogle()">
-                        <i class="fab fa-google"></i> Sign in with Google
-                    </button>
-                    <button class="social-btn facebook-btn" onclick="signInWithFacebook()">
-                        <i class="fab fa-facebook-f"></i> Sign in with Facebook
-                    </button>
-                </div>
-                <div class="divider"><span>or sign in with email</span></div>
-                <div class="form-group"><label>Email</label><input type="text" id="email"></div>
-                <div class="form-group"><label>Password</label><input type="password" id="password"></div>
-                <div class="terms-section">
-                    <input type="checkbox" id="termsCheck">
-                    <div class="terms-text">I agree to the <a href="pages/terms.html">Terms</a> and <a href="pages/privacy.html">Privacy Policy</a></div>
-                </div>
-                <button class="btn btn-primary" onclick="handleSignIn()">Sign In</button>
-                <p>Don't have an account? <a href="pages/signup.html">Create one</a></p>
-            </div>
-        </div>
+    <div class="footer">
+        © 2025 UnityXhub — Built by Filipinos, for a global digital economy.
     </div>
 
-    <!-- Cart Notification -->
-    <div class="cart-notification" id="cartNotification">
-        <i class="fas fa-check-circle"></i>
-        <span>Item added!</span>
-    </div>
-
-    <!-- Load Scripts -->
-    <script src="js/main.js"></script>
-    <script src="js/cart.js"></script>
-
-    <!-- Unified Script -->
+    <!-- Script -->
     <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            // ✅ All your existing logic here...
-            // Mobile Nav, Hero Carousel, Search, Read More, etc.
-            
-            // ✅ Firebase Sign-In Functions
-            window.signInWithGoogle = () => {
-                const provider = window.googleProvider;
-                const auth = window.firebaseAuth;
-                signInWithPopup(auth, provider).catch(err => alert("Error: " + err.message));
-            };
+        // Set Launch Date
+        const launchDate = new Date("December 25, 2025 00:00:00").getTime();
 
-            window.signInWithFacebook = () => {
-                const provider = window.facebookProvider;
-                const auth = window.firebaseAuth;
-                signInWithPopup(auth, provider).catch(err => alert("Error: " + err.message));
-            };
+        // Update every second
+        const timer = setInterval(() => {
+            const now = new Date().getTime();
+            const distance = launchDate - now;
 
-            // ✅ Handle Email Sign In
-            window.handleSignIn = function() {
-                const email = document.getElementById('email')?.value.trim();
-                const password = document.getElementById('password')?.value;
-                const termsChecked = document.getElementById('termsCheck')?.checked;
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-                if (!email || !password) return alert("Please fill all fields.");
-                if (!termsChecked) return alert("Agree to Terms.");
+            document.getElementById("days").innerText = String(days).padStart(2, '0');
+            document.getElementById("hours").innerText = String(hours).padStart(2, '0');
+            document.getElementById("minutes").innerText = String(minutes).padStart(2, '0');
+            document.getElementById("seconds").innerText = String(seconds).padStart(2, '0');
 
-                alert("✅ Signed in successfully!");
-                document.getElementById('signInModal').style.display = 'none';
-            };
+            if (distance < 0) {
+                clearInterval(timer);
+                document.querySelector(".countdown").innerHTML = "<p style='color:#4caf50;'>🎉 We're Live Now! Visit <a href='/index.html' style='color:#ff6b00;'>UnityXhub</a></p>";
+            }
+        }, 1000);
 
-            // ✅ Chat Toggle & Minimize (Fixed)
-            const chatToggle = document.getElementById('chatToggle');
-            const chatBox = document.getElementById('chatBox');
-            const chatMinimize = document.getElementById('chatMinimize');
+        // Save Email to localStorage
+        function saveEmailAndNotify(e) {
+            e.preventDefault();
+            const email = document.getElementById('emailInput').value.trim();
 
-            chatToggle?.addEventListener('click', () => {
-                chatBox.style.display = 'block';
-                chatToggle.style.display = 'none';
-            });
+            // Save to localStorage
+            const subscribers = JSON.parse(localStorage.getItem('unityxhub_subscribers') || '[]');
+            if (!subscribers.find(item => item.email === email)) {
+                subscribers.push({
+                    email: email,
+                    timestamp: new Date().toISOString()
+                });
+                localStorage.setItem('unityxhub_subscribers', JSON.stringify(subscribers));
+            }
 
-            chatMinimize?.addEventListener('click', () => {
-                chatBox.style.display = 'none';
-                chatToggle.style.display = 'flex';
-            });
-
-            // Add other functions: sendUserMessage, auto-scroll, etc.
-        });
+            alert(`✅ Thank you, ${email}! We’ll notify you when UnityXhub launches!`);
+            document.getElementById('emailInput').value = '';
+        }
     </script>
+
 </body>
 </html>
